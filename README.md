@@ -19,6 +19,7 @@ and customized by anyone.
   
 ### Planned Improvements:
   * Improve this ReadMe
+  * Add NgChange support
   * Keyboard Tabbing/Arrow Key Support
   * More Custom Styling Options
   * A Couple Default Styling Options to Choose Frome
