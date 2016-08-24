@@ -1,0 +1,32 @@
+<div class="fawesome-input-container"
+  ng-class="{'fawesome-expanded': searchSelect.ngModel}">
+  <div class="form-control input-lg cover-base"
+    ng-class="{'shrink-cover': searchSelect.ngModel}">
+    {{searchSelect.placeholderText}}
+  </div>
+
+  <input name="current_consultant"
+    ng-hide="true"
+    ng-model="searchSelect.ngModel">
+
+  <input name="search_string" type="text" class="form-control input-lg input-base"
+    ng-blur="searchSelect.setSearchStringToOptionName();"
+    ng-class="{'focused-input': searchSelect.ngModel}"
+    ng-focus="searchSelect.initializeSearch(); searchSelect.searchOptions();"
+    ng-keyup="searchSelect.searchOptions()"
+    ng-model="searchSelect.searchString"
+    ng-required="true"
+    placeholder="{{searchSelect.placeholderText}}">
+
+  <i class="fa fa-truck"
+    ng-class="{'shrink-icon': searchSelect.ngModel}"></i>
+</div>
+
+<div class="smart-select-container" ng-show="searchSelect.searching === true">
+  <ul class="form-control option-list option-list-defaults">
+    <li ng-repeat="option in searchSelect.filteredOptions"
+      ng-mousedown="searchSelect.selectOption(option)">
+      {{option.display_name}}
+    </li>
+  </ul>
+</div>
