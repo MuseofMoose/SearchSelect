@@ -11,12 +11,13 @@ and customized by anyone.
   * options - an array containing all of the selectable option objects
   * optionLabelKeys - a string with the name of the key on the option object to be used a display name
   * placeholderText - a string with the placeholder text for the select
+  * fontAwesomeIcon (optional) - a string with the class name of the font-awesome icon to be displayed on the right side of the input portion of the select
 
 ### Basic Usage (Work in Progress):
   * Pass in your array of option objects via the "options" param.
   * Pass in a string with the name of the attribute of each option that you want to use as the display name.
   * Think of the ngModal param as the container for storing the "output" of the directive. Whatever the user selects will end up there and be usable in whatever scope you declared the container.
-  
+
 ### Planned Improvements:
   * Improve this ReadMe
   * Add NgChange support
