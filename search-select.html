@@ -5,7 +5,7 @@
     {{searchSelect.placeholderText}}
   </div>
 
-  <input name="current_consultant"
+  <input name="current_option"
     ng-hide="true"
     ng-model="searchSelect.ngModel">
 
@@ -18,8 +18,8 @@
     ng-required="true"
     placeholder="{{searchSelect.placeholderText}}">
 
-  <i class="fa fa-truck"
-    ng-class="{'shrink-icon': searchSelect.ngModel}"></i>
+  <i class="fa"
+    ng-class="{'shrink-icon': searchSelect.ngModel, '{{searchSelect.fontAwesomeIcon}}': true}"></i>
 </div>
 
 <div class="smart-select-container" ng-show="searchSelect.searching === true">

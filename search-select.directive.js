@@ -13,6 +13,7 @@
         options: '=',
         optionLabelKeys: '=',
         placeholderText: '=',
+        fontAwesomeIcon: '=',
       },
       controller: SearchSelectController,
       controllerAs: 'searchSelect',
