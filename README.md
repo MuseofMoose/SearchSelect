@@ -6,12 +6,13 @@ it adds a search bar right into input, allowing your users to narrow down a drop
 to solve a problem for a personal project. I hope to gradually improve it to the point where it can be easily implemented
 and customized by anyone.
 
-### Params:
+### Options:
   * ngModel - an object variable for storing the selected option
   * options - an array containing all of the selectable option objects
   * optionLabelKeys - a string with the name of the key on the option object to be used a display name
   * placeholderText - a string with the placeholder text for the select
   * fontAwesomeIcon (optional) - a string with the class name of the font-awesome icon to be displayed on the right side of the input portion of the select
+  * ngChange (optional) - an expression to be evaluated when the user selects an option
 
 ### Basic Usage (Work in Progress):
   * Pass in your array of option objects via the "options" param.
@@ -20,7 +21,6 @@ and customized by anyone.
 
 ### Planned Improvements:
   * Improve this ReadMe
-  * Add NgChange support
   * Keyboard Tabbing/Arrow Key Support
   * More Custom Styling Options
   * A Couple Default Styling Options to Choose Frome

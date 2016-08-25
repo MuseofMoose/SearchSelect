@@ -6,6 +6,7 @@
   /** @ngInject */
   function searchSelect() {
     var directive = {
+      require: "ngModel",
       restrict: 'EA',
       templateUrl: 'app/components/search-select/search-select.html',
       scope: {
@@ -18,6 +19,12 @@
       controller: SearchSelectController,
       controllerAs: 'searchSelect',
       bindToController: true,
+      link: function(scope, elt, attrs, ctrl){
+        scope.triggerNgChange = function(value){
+          ctrl.$setViewValue(value);
+        }
+      }
+
     };
 
     return directive;
@@ -25,7 +32,6 @@
     /** @ngInject */
     function SearchSelectController($scope) {
       var vm = this;
-
 
       vm.filteredOptions = vm.options;
       vm.optionHashTable = {};
@@ -97,6 +103,7 @@
       function selectOption(option){
         vm.ngModel = option;
         vm.selectedIndex = option.index;
+        $scope.triggerNgChange(option);
         setSearchStringToOptionName();
       }
 
