@@ -1,12 +1,8 @@
-.smart-select-container {
+.results-container {
   z-index: 5;
   position: absolute;
   top: 100%;
   width: 100%;
-
-  .fawesome-input-container {
-    margin: 0;
-  }
 
   .option-list {
     z-index: 5;
@@ -24,9 +20,10 @@
     padding: 0px;
     max-height: 300px;
 
-    li {
+    .option-list-item {
       font-size: 20px;
       padding: 5px 15px 5px 15px;
+      display: block;
 
       &:hover {
         background-color: #ececec;

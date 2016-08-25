@@ -9,7 +9,8 @@
     ng-hide="true"
     ng-model="searchSelect.ngModel">
 
-  <input name="search_string" type="text" class="form-control input-lg input-base"
+  <input name="search_string" type="text"
+    class="form-control input-lg input-base"
     ng-blur="searchSelect.setSearchStringToOptionName();"
     ng-class="{'focused-input': searchSelect.ngModel}"
     ng-focus="searchSelect.initializeSearch(); searchSelect.searchOptions();"
@@ -22,7 +23,7 @@
     ng-class="{'shrink-icon': searchSelect.ngModel, '{{searchSelect.fontAwesomeIcon}}': true}"></i>
 </div>
 
-<div class="smart-select-container" ng-show="searchSelect.searching === true">
+<div class="results-container" ng-show="searchSelect.searching === true">
   <ul class="form-control option-list option-list-defaults">
     <li class="option-list-item"
       ng-repeat="option in searchSelect.filteredOptions"
