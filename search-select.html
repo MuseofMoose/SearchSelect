@@ -24,7 +24,8 @@
 
 <div class="smart-select-container" ng-show="searchSelect.searching === true">
   <ul class="form-control option-list option-list-defaults">
-    <li ng-repeat="option in searchSelect.filteredOptions"
+    <li class="option-list-item"
+      ng-repeat="option in searchSelect.filteredOptions"
       ng-mousedown="searchSelect.selectOption(option)">
       {{option.display_name}}
     </li>
