@@ -95,10 +95,10 @@
 
       function setSearchStringToOptionName(){
         vm.searching = false;
-        if (typeof vm.filteredOptions[vm.selectedIndex] === 'undefined'){
+        if (typeof vm.options[vm.selectedIndex] === 'undefined'){
           return;
         }
-        vm.searchString = vm.filteredOptions[vm.selectedIndex].display_name;
+        vm.searchString = vm.options[vm.selectedIndex].display_name;
       }
 
       function selectOption(option){
@@ -115,16 +115,13 @@
         }
 
         var result = [];
-        var indexCounter = 0;
         var searchString = vm.searchString.toLowerCase();
 
         for (var i=0; i<vm.options.length; i++){
           var name = vm.options[i].display_name;
           if (name.toLowerCase().indexOf(searchString) !== -1){
             var option = angular.copy(vm.options[i]);
-            option.index = indexCounter;
             result.push(option);
-            indexCounter++;
           }
         }
         vm.filteredOptions = result;
