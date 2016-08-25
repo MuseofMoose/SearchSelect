@@ -37,7 +37,7 @@
       vm.optionHashTable = {};
       vm.searching = false;
       vm.searchString = '';
-      vm.selectedIndex = 0;
+      vm.selectedIndex = null;
 
       vm.initializeSearch = initializeSearch;
       vm.searchOptions = searchOptions;
@@ -58,6 +58,7 @@
       }
 
       function initializeSelectedIndex(){
+        if (typeof vm.ngModel === 'undefined'){ return; }
         for (var i=0; i<vm.options.length; i++){
           if (vm.ngModel.id === vm.options[i].id){
             vm.selectedIndex = i;
