@@ -33,8 +33,9 @@
     function SearchSelectController($scope) {
       var vm = this;
 
-      vm.filteredOptions = vm.options;
-      vm.optionHashTable = {};
+      var options = {};
+
+      vm.filteredOptions = angular.copy(vm.options);
       vm.searching = false;
       vm.searchString = '';
       vm.selectedIndex = null;
@@ -48,8 +49,9 @@
       $scope.$watch(function(){
         return vm.options;
       }, function(newVal, oldVal){
+        options = angular.copy(vm.options);
+        initializeIndexes();
         getOptionDisplayNames();
-        initializeSelectedIndex();
       }, true);
 
       function initializeSearch(){
@@ -57,18 +59,22 @@
         vm.searchString = '';
       }
 
-      function initializeSelectedIndex(){
+      function initializeIndexes(){
         if (typeof vm.ngModel === 'undefined'){ return; }
-        for (var i=0; i<vm.options.length; i++){
-          if (vm.ngModel.id === vm.options[i].id){
+        for (var i=0; i<options.length; i++){
+          options[i].index = i;
+          if (vm.ngModel.id === options[i].id){
             vm.selectedIndex = i;
           }
         }
       }
 
       function getOptionDisplayNames(){
-        for(var i=0; i<vm.options.length; i++){
-          var option = vm.options[i];
+        //need to make optionlabelkey search a little safer
+        //if object has name and full_name attributes and you specify full_name
+        //in optionLabelKey, both will be added
+        for(var i=0; i<options.length; i++){
+          var option = options[i];
           var display_name = '';
           for(var key in option){
             if (vm.optionLabelKeys.indexOf(key) !== -1){
@@ -78,14 +84,14 @@
           if (display_name !== ''){
             display_name = display_name.slice(0, -1);
           }
-          vm.options[i].display_name = display_name;
+          options[i].display_name = display_name;
         }
 
         initializeFilteredOptions();
       }
 
       function initializeFilteredOptions(){
-        vm.filteredOptions = vm.options;
+        vm.filteredOptions = options;
         for (var i=0; i<vm.filteredOptions.length; i++){
           vm.filteredOptions[i].index = i;
         }
@@ -95,10 +101,10 @@
 
       function setSearchStringToOptionName(){
         vm.searching = false;
-        if (typeof vm.options[vm.selectedIndex] === 'undefined'){
+        if (typeof options[vm.selectedIndex] === 'undefined'){
           return;
         }
-        vm.searchString = vm.options[vm.selectedIndex].display_name;
+        vm.searchString = options[vm.selectedIndex].display_name;
       }
 
       function selectOption(option){
@@ -110,17 +116,17 @@
 
       function searchOptions(){
         if (vm.searchString === '' || typeof vm.searchString === 'undefined'){
-          vm.filteredOptions = vm.options;
+          vm.filteredOptions = options;
           return;
         }
 
         var result = [];
         var searchString = vm.searchString.toLowerCase();
 
-        for (var i=0; i<vm.options.length; i++){
-          var name = vm.options[i].display_name;
+        for (var i=0; i<options.length; i++){
+          var name = options[i].display_name;
           if (name.toLowerCase().indexOf(searchString) !== -1){
-            var option = angular.copy(vm.options[i]);
+            var option = angular.copy(options[i]);
             result.push(option);
           }
         }
