@@ -1,34 +1,36 @@
-<div class="fawesome-input-container"
-  ng-class="{'fawesome-expanded': searchSelect.ngModel}">
-  <div class="form-control input-lg cover-base"
-    ng-class="{'shrink-cover': searchSelect.ngModel}">
-    {{searchSelect.placeholderText}}
+<div class="search-select-container">
+  <div class="fawesome-input-container"
+    ng-class="{'fawesome-expanded': searchSelect.ngModel}">
+    <div class="form-control input-lg cover-base"
+      ng-class="{'shrink-cover': searchSelect.ngModel}">
+      {{searchSelect.placeholderText}}
+    </div>
+
+    <input name="current_option"
+      ng-hide="true"
+      ng-model="searchSelect.ngModel">
+
+    <input name="search_string" type="text"
+      class="form-control input-lg input-base"
+      ng-blur="searchSelect.setSearchStringToOptionName();"
+      ng-class="{'focused-input': searchSelect.ngModel}"
+      ng-focus="searchSelect.initializeSearch(); searchSelect.searchOptions();"
+      ng-keyup="searchSelect.searchOptions()"
+      ng-model="searchSelect.searchString"
+      ng-required="true"
+      placeholder="{{searchSelect.placeholderText}}">
+
+    <i class="fa"
+      ng-class="{'shrink-icon': searchSelect.ngModel, '{{searchSelect.fontAwesomeIcon}}': true}"></i>
   </div>
 
-  <input name="current_option"
-    ng-hide="true"
-    ng-model="searchSelect.ngModel">
-
-  <input name="search_string" type="text"
-    class="form-control input-lg input-base"
-    ng-blur="searchSelect.setSearchStringToOptionName();"
-    ng-class="{'focused-input': searchSelect.ngModel}"
-    ng-focus="searchSelect.initializeSearch(); searchSelect.searchOptions();"
-    ng-keyup="searchSelect.searchOptions()"
-    ng-model="searchSelect.searchString"
-    ng-required="true"
-    placeholder="{{searchSelect.placeholderText}}">
-
-  <i class="fa"
-    ng-class="{'shrink-icon': searchSelect.ngModel, '{{searchSelect.fontAwesomeIcon}}': true}"></i>
-</div>
-
-<div class="results-container" ng-show="searchSelect.searching === true">
-  <ul class="form-control option-list option-list-defaults">
-    <li class="option-list-item"
-      ng-repeat="option in searchSelect.filteredOptions"
-      ng-mousedown="searchSelect.selectOption(option)">
-      {{option.display_name}}
-    </li>
-  </ul>
+  <div class="results-container" ng-show="searchSelect.searching === true">
+    <ul class="form-control option-list option-list-defaults">
+      <li class="option-list-item"
+        ng-repeat="option in searchSelect.filteredOptions"
+        ng-mousedown="searchSelect.selectOption(option)">
+        {{option.display_name}}
+      </li>
+    </ul>
+  </div>
 </div>
