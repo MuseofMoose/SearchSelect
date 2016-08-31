@@ -12,9 +12,9 @@
       scope: {
         ngModel: '=',
         options: '=',
-        optionLabelKeys: '=',
-        placeholderText: '=',
-        fontAwesomeIcon: '=',
+        optionLabelKeys: '@',
+        placeholderText: '@',
+        fontAwesomeIcon: '@',
       },
       controller: SearchSelectController,
       controllerAs: 'searchSelect',
@@ -24,7 +24,6 @@
           ctrl.$setViewValue(value);
         }
       }
-
     };
 
     return directive;
