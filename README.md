@@ -24,6 +24,6 @@ and customized by anyone.
   * Package as a module and make it available on Bower
   * Keyboard Tabbing/Arrow Key Support
   * More Custom Styling Options
-  * A Couple Default Styling Options to Choose Frome
+  * A Couple Default Styling Options to Choose From
   * Expand to Other Frameworks
   * Specify Id Key?
