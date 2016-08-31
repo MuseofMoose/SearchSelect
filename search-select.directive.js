@@ -100,6 +100,10 @@
 
       function setSearchStringToOptionName(){
         vm.searching = false;
+        if (vm.selectedIndex === null){
+          vm.searchString = "";
+          return;
+        }
         if (typeof options[vm.selectedIndex] === 'undefined'){
           return;
         }
