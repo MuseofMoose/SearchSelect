@@ -24,6 +24,7 @@ and customized by anyone.
 
 ### In Progress:
   * Package as a module and make it available on Bower
+  * Add seperate repo for angular versions that don't include "bindToController"
 
 ### The Future:
   * Improve this ReadMe
