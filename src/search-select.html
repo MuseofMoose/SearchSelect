@@ -1,0 +1,32 @@
+<div class="search-select-container">
+    <div class="ss-input-container"
+    ng-class="{'container-expanded': searchSelect.isOptionSelected()}">
+    <div class="cover-base"
+      ng-class="{'cover-expanded': searchSelect.isOptionSelected()}">
+      {{searchSelect.placeholderText}}
+    </div>
+
+    <input name="search_string" type="text"
+      class="input-base"
+      placeholder="{{searchSelect.placeholderText}}"
+      ng-class="{'input-expanded': searchSelect.isOptionSelected()}"
+      ng-model="searchSelect.searchString"
+      ng-focus="searchSelect.initializeSearch(); searchSelect.searchOptions();"
+      ng-blur="searchSelect.setSearchStringToOptionName()"
+      ng-keyup="searchSelect.searchOptions()"
+      ng-required="true">
+
+    <i class="icon-base fa"
+      ng-class="{'icon-expanded': searchSelect.isOptionSelected(), '{{searchSelect.fontAwesomeIcon}}': true}"></i>
+  </div>
+
+  <div class="results-container" ng-show="searchSelect.searching">
+    <ul class="option-list" ng-show="searchSelect.filteredOptions.length > 0">
+      <li class="option-list-item"
+        ng-repeat="option in searchSelect.filteredOptions"
+        ng-mousedown="searchSelect.selectOption(option)">
+        {{option.display_name}}
+      </li>
+    </ul>
+  </div>
+</div>
