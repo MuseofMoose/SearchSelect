@@ -6,7 +6,7 @@ it adds a search bar right into the input, allowing your users to narrow down a 
 to solve a problem for a personal project. I'm working on gradually improving it to the point where it can be easily implemented
 and customized by anyone.
 
-## This repo is for projects that are using versions of Angular prior to 1.3
+## This repo is for projects using pre-1.3 versions of Angular
 
 ### Options:
   * ngModel - an object variable for storing the selected option
