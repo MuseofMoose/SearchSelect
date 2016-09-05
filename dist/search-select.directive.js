@@ -1,7 +1,7 @@
 /*!
- * angular-directive-boilerplate
+ * search-select-legacy
  * 
- * Version: 0.0.8 - 2016-09-05T17:52:34.009Z
+ * Version: 0.0.1 - 2016-09-05T18:27:54.030Z
  * License: MIT
  */
 

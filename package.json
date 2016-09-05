@@ -1,18 +1,15 @@
 {
-  "name": "angular-directive-boilerplate",
-  "version": "0.0.8",
-  "description": "Angular Publishable Directive Boilerplate",
-  "repository": "git@github.com:mohsen1/angular-directive-boilerplate.git",
+  "name": "search-select-legacy",
+  "version": "0.0.1",
+  "description": "Searchable Select Dropdowns",
+  "repository": "https://github.com/MuseofMoose/SearchSelectLegacy.git",
   "main": "dist/directive.js",
-  "scripts": {
-    "test": "./node_modules/gulp/bin/gulp.js test"
-  },
   "keywords": [
     "angularjs",
     "angular",
     "directive"
   ],
-  "author": "Mohsen Azimi",
+  "author": "Spencer Dellis",
   "license": "MIT",
   "devDependencies": {
     "del": "^0.1.3",
