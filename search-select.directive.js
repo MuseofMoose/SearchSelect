@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('engageAngularApp').directive('searchSelect', searchSelect);
+  angular.module('searchSelectApp', []).directive('searchSelect', searchSelect);
 
   /** @ngInject */
   function searchSelect() {

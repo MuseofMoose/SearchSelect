@@ -19,9 +19,14 @@ and customized by anyone.
   * Pass in a string with the name of the attribute of each option that you want to use as the display name.
   * Think of the ngModal param as the container for storing the "output" of the directive. Whatever the user selects will end up there and be usable in whatever scope you declared the container.
 
-### Planned Improvements:
-  * Improve this ReadMe
+### Dependencies:
+  * ngAnimate, if you want animation when you make your first selection (assuming it starts out empty)
+
+### In Progress:
   * Package as a module and make it available on Bower
+
+### The Future:
+  * Improve this ReadMe
   * Keyboard Tabbing/Arrow Key Support
   * More Custom Styling Options
   * A Couple Default Styling Options to Choose From
