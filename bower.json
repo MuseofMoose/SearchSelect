@@ -19,12 +19,12 @@
   ],
   "dependencies": {
     "angular": ">=1.2.26",
-    "angular-animate": "~1.2.26",
+    "angular-animate": "~1.2.26"
   },
   "devDependencies": {
     "angular": "~1.2.26",
     "angular-sanitize": "~1.2.26",
-    "angular-mocks": "~1.2.26",
+    "angular-mocks": "~1.2.26"
   },
   "resolutions": {
     "angular": "~1.2.26"
