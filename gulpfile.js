@@ -1,7 +1,6 @@
 var fs = require('fs');
 var connect = require('gulp-connect');
 var gulp = require('gulp');
-var karma = require('karma').server;
 var concat = require('gulp-concat');
 var jshint = require('gulp-jshint');
 var header = require('gulp-header');
@@ -124,19 +123,6 @@ gulp.task('jshint-test', function(){
   return gulp.src('./test/**/*.js').pipe(jshint());
 })
 
-gulp.task('karma', function (done) {
-  karma.start({
-    configFile: __dirname + '/karma.conf.js',
-    singleRun: true
-  }, done);
-});
-
-gulp.task('karma-serve', function(done){
-  karma.start({
-    configFile: __dirname + '/karma.conf.js'
-  }, done);
-});
-
 function handleError(err) {
   console.log(err.toString());
   this.emit('end');
@@ -145,5 +131,3 @@ function handleError(err) {
 gulp.task('build', ['scripts']);
 gulp.task('serve', ['build', 'connect', 'watch', 'open']);
 gulp.task('default', ['build', 'test']);
-gulp.task('test', ['build', 'jshint-test', 'karma']);
-gulp.task('serve-test', ['build', 'watch', 'jshint-test', 'karma-serve']);
