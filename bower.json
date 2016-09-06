@@ -7,7 +7,7 @@
   "description": "Searchable Select Dropdowns",
   "main": [
     "dist/search-select.directive.js",
-    "dist/search-select.css",
+    "dist/search-select.css"
   ],
   "license": "MIT",
   "private": false,
