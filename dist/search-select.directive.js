@@ -1,7 +1,7 @@
 /*!
  * search-select-legacy
  * 
- * Version: 0.0.1 - 2016-09-06T20:21:07.406Z
+ * Version: 0.0.1 - 2016-09-06T21:37:38.678Z
  * License: MIT
  */
 
@@ -26,6 +26,7 @@
       },
       controller: SearchSelectController,
       controllerAs: 'searchSelect',
+      bindToController: true,
       link: function(scope, elt, attrs, ctrl){
         scope.triggerNgChange = function(value){
           ctrl.$setViewValue(value);
@@ -44,10 +45,7 @@
 
       // For older version of angular bindToController doesn't work
       //and we have to manually store the scope values as vm vars.
-      vm.filteredOptions = angular.copy($scope.options);
-      vm.fontAwesomeIcon = $scope.fontAwesomeIcon;
-      vm.optionLabelKeys = $scope.optionLabelKeys;
-      vm.placeholderText = $scope.placeholderText;
+      vm.filteredOptions = angular.copy(vm.options);
       vm.searching = false;
       vm.searchString = '';
       vm.selectedIndex = null;
@@ -60,9 +58,9 @@
 
 
       $scope.$watch(function(){
-        return $scope.options;
+        return vm.options;
       }, function(newVal, oldVal){
-        options = angular.copy($scope.options);
+        options = angular.copy(vm.options);
         initializeIndexes();
         getOptionDisplayNames();
       }, true);
@@ -73,10 +71,10 @@
       }
 
       function initializeIndexes(){
-        if (typeof $scope.ngModel === 'undefined'){ return; }
+        if (typeof vm.ngModel === 'undefined'){ return; }
         for (var i=0; i<options.length; i++){
           options[i].index = i;
-          if ($scope.ngModel.id === options[i].id){
+          if (vm.ngModel.id === options[i].id){
             vm.selectedIndex = i;
           }
         }
@@ -126,7 +124,7 @@
       }
 
       function selectOption(option){
-        $scope.ngModel = option;
+        vm.ngModel = option;
         vm.selectedIndex = option.index;
         $scope.triggerNgChange(option);
         setSearchStringToOptionName();
@@ -152,7 +150,7 @@
       }
 
       function isOptionSelected(){
-        return (Object.keys($scope.ngModel).length !== 0 ? true : false);
+        return (Object.keys(vm.ngModel).length !== 0 ? true : false);
       }
     }
   }
