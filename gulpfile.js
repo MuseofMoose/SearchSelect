@@ -111,8 +111,8 @@ gulp.task('scripts', ['clean'], function() {
   gulp.src('demo/index.html')
     .pipe(gulp.dest('dist'));
 
-  gulp.src('bower_components')
-    .pipe(gulp.dest('dist'));
+  gulp.src('bower_components/**/*')
+    .pipe(gulp.dest('dist/bower_components'));
 });
 
 gulp.task('open', function(){
