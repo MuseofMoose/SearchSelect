@@ -102,13 +102,13 @@ gulp.task('scripts', ['clean'], function() {
     .pipe(gulp.dest('./dist'))
     .pipe(connect.reload());
 
-  gulp.src('demo/demo.css')
+  gulp.src('src/demo.css')
     .pipe(gulp.dest('dist'));
 
-  gulp.src('demo/demo.js')
+  gulp.src('src/demo.js')
     .pipe(gulp.dest('dist'));
 
-  gulp.src('demo/index.html')
+  gulp.src('src/index.html')
     .pipe(gulp.dest('dist'));
 
   gulp.src('bower_components/**/*')
