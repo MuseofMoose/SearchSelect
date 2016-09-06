@@ -73,7 +73,7 @@ gulp.task('scripts', ['clean'], function() {
       .pipe(jshint.reporter('fail'));
   };
 
-  gulp.src('src/_search-select.scss')
+  gulp.src('src/search-select.scss')
       .pipe(less())
       .pipe(header(config.banner, {
         timestamp: (new Date()).toISOString(), pkg: config.pkg
