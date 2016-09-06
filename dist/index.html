@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="_search-select.css">
+    <link rel="stylesheet" href="../dist/_search-select.css">
     <link rel="stylesheet" href="demo.css">
   </head>
   <body>
@@ -36,6 +36,7 @@
           placeholder-text="Select Fruit"
           font-awesome-icon="fa-lemon-o">
         </search-select>
+        <h4>Selected Option: {{main.currentFruitOption}}</h4>
       </div>
 
       <div class="usage row">
@@ -57,13 +58,14 @@
           placeholder-text="Select User"
           font-awesome-icon="fa-user">
         </search-select>
+        <h4>Selected Option: {{main.currentUserOption}}</h4>
       </div>
 
       <div class="bottom-spacer"></div>
     </div>
 
-    <script src="search-select.directive.js"></script>
+    <script src="../dist/search-select.directive.js"></script>
     <script src="demo.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
   </body>
 </html>

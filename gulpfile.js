@@ -38,6 +38,10 @@ gulp.task('connect', function() {
   });
 });
 
+gulp.task('clean', function(cb) {
+  del(['dist/**/*'], cb);
+});
+
 gulp.task('html', function () {
   gulp.src(['./dist/*.html', '.src/*.html'])
     .pipe(connect.reload());
@@ -45,15 +49,10 @@ gulp.task('html', function () {
 
 gulp.task('watch', function () {
   gulp.watch(['./dist/**/*.html'], ['html']);
-  gulp.watch(['./src/**/*.js', './dist/**/*.js', './**/*.html'], ['scripts']);
-});
-
-gulp.task('clean', function(cb) {
-  // del(['dist/**/*'], cb);
+  // gulp.watch(['./src/**/*.js', './dist/**/*.js', './**/*.html'], ['scripts']);
 });
 
 gulp.task('scripts', ['clean'], function() {
-
   function buildTemplates() {
     return gulp.src('src/**/*.html')
       .pipe(minifyHtml({
@@ -102,6 +101,18 @@ gulp.task('scripts', ['clean'], function() {
     .pipe(uglify({preserveComments: 'some'}))
     .pipe(gulp.dest('./dist'))
     .pipe(connect.reload());
+
+  gulp.src('demo/demo.css')
+    .pipe(gulp.dest('dist'));
+
+  gulp.src('demo/demo.js')
+    .pipe(gulp.dest('dist'));
+
+  gulp.src('demo/index.html')
+    .pipe(gulp.dest('dist'));
+
+  gulp.src('bower_components')
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('open', function(){

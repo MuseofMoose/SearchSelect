@@ -1,7 +1,7 @@
 /*!
  * search-select-legacy
  * 
- * Version: 0.0.1 - 2016-09-06T01:31:33.460Z
+ * Version: 0.0.1 - 2016-09-06T02:58:25.917Z
  * License: MIT
  */
 
