@@ -16,10 +16,8 @@ and customized by anyone.
   * fontAwesomeIcon (optional) - a string with the class name of the font-awesome icon to be displayed on the right side of the input portion of the select
   * ngChange (optional) - an expression to be evaluated when the user selects an option
 
-### Basic Usage (Work in Progress):
-  * Pass in your array of option objects via the "options" param.
-  * Pass in a string with the name of the attribute of each option that you want to use as the display name.
-  * Think of the ngModal param as the container for storing the "output" of the directive. Whatever the user selects will end up there and be usable in whatever scope you declared the container.
+### Usage:
+  * Some simple examples can be found [here.](https://museofmoose.github.io/SearchSelectLegacy/dist/)
 
 ### Dependencies:
   * ngAnimate, if you want animation when you make your first selection (assuming it starts out empty)
