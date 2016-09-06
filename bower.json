@@ -1,0 +1,24 @@
+{
+  "name": "search-select-legacy",
+  "version": "0.0.1",
+  "authors": [
+    "Spencer Dellis <spencerdellis@gmail.com>"
+  ],
+  "description": "Searchable Select Dropdowns",
+  "main": [
+    "dist/search-select.directive.js",
+    "dist/search-select.css"
+  ],
+  "license": "MIT",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": ">=1.2.26",
+    "angular-animate": "~1.2.26"
+  }
+}
