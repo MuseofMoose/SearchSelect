@@ -52,7 +52,7 @@
 
 
       $scope.$watch(function(){
-        return vm.options;
+        return $scope.options;
       }, function(newVal, oldVal){
         options = angular.copy($scope.options);
         initializeIndexes();
