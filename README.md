@@ -24,7 +24,7 @@ and customized by anyone.
 
 ### In Progress:
   * Package as a module and make it available on Bower
-  * Add seperate repo for angular versions that don't include "bindToController"
+  * Merge SearchSelect and SearchSelectLegacy so I don't go crazy
 
 ### The Future:
   * Improve this ReadMe
