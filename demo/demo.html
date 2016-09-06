@@ -8,6 +8,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-sanitize.js"></script>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../dist/_search-select.css">
     <link rel="stylesheet" href="demo.css">
@@ -17,18 +18,48 @@
       <h1 class="text-muted">Demo</h1>
 
       <div class="usage row" >
-        <h4>Simple usage</h4>
-        <p>This is a simple usage of the directive</p>
-        <pre>&lt;search-select&gt;&lt;/search-select&gt;</pre>
-        <h4>Results</h4>
+        <h3>Basic example:</h3>
+<pre>
+  &lt;search-select
+    ng-model="main.currentFruitOption"
+    options="main.fruitOptions"
+    option-label-keys="name"
+    placeholder-text="Select Fruit"
+    font-awesome-icon="fa-lemon-o"&gt;
+  &lt;/search-select&gt;
+</pre>
+        <h3>Results in:</h3>
         <search-select
-          ng-model="main.currentOption"
-          options="main.options"
-          option-label-keys="first_name last_name"
-          placeholder-text="Select Option"
-          font-awesome-icon="fa-truck">
+          ng-model="main.currentFruitOption"
+          options="main.fruitOptions"
+          option-label-keys="name"
+          placeholder-text="Select Fruit"
+          font-awesome-icon="fa-lemon-o">
         </search-select>
       </div>
+
+      <div class="usage row">
+        <h3>Example with multiple label-keys:</h3>
+<pre>
+  &lt;search-select
+    ng-model="main.currentUserOption"
+    options="main.userOptions"
+    option-label-keys="first_name last_name"
+    placeholder-text="Select User"
+    font-awesome-icon="fa-user"&gt;
+  &lt;/search-select&gt;
+</pre>
+        <h3>Results in:</h3>
+        <search-select
+          ng-model="main.currentUserOption"
+          options="main.userOptions"
+          option-label-keys="first_name last_name"
+          placeholder-text="Select User"
+          font-awesome-icon="fa-user">
+        </search-select>
+      </div>
+
+      <div class="bottom-spacer"></div>
     </div>
 
     <script src="../dist/search-select.directive.js"></script>

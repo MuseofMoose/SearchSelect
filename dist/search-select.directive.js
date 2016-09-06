@@ -1,7 +1,7 @@
 /*!
  * search-select-legacy
  * 
- * Version: 0.0.1 - 2016-09-05T18:27:54.030Z
+ * Version: 0.0.1 - 2016-09-06T00:49:16.195Z
  * License: MIT
  */
 
@@ -26,7 +26,6 @@
       },
       controller: SearchSelectController,
       controllerAs: 'searchSelect',
-      bindToController: true,
       link: function(scope, elt, attrs, ctrl){
         scope.triggerNgChange = function(value){
           ctrl.$setViewValue(value);
@@ -46,12 +45,12 @@
       // For older version of angular bindToController doesn't work
       //and we have to manually store the scope values as vm vars.
       vm.filteredOptions = angular.copy($scope.options);
+      vm.fontAwesomeIcon = $scope.fontAwesomeIcon;
       vm.optionLabelKeys = $scope.optionLabelKeys;
       vm.placeholderText = $scope.placeholderText;
       vm.searching = false;
       vm.searchString = '';
       vm.selectedIndex = null;
-      vm.selectedOption = $scope.ngModel;
 
       vm.initializeSearch = initializeSearch;
       vm.isOptionSelected = isOptionSelected;
@@ -128,7 +127,6 @@
 
       function selectOption(option){
         $scope.ngModel = option;
-        vm.selectedOption = option;
         vm.selectedIndex = option.index;
         $scope.triggerNgChange(option);
         setSearchStringToOptionName();
@@ -154,7 +152,7 @@
       }
 
       function isOptionSelected(){
-        return (Object.keys(vm.selectedOption).length !== 0 ? true : false);
+        return (Object.keys($scope.ngModel).length !== 0 ? true : false);
       }
     }
   }

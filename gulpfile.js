@@ -15,6 +15,7 @@ var templateCache = require('gulp-angular-templatecache');
 var gutil = require('gulp-util');
 var plumber = require('gulp-plumber');
 var open = require('gulp-open');
+var sass = require('gulp-sass');
 var less = require('gulp-less');
 var order = require("gulp-order");
 
@@ -44,8 +45,7 @@ gulp.task('html', function () {
 
 gulp.task('watch', function () {
   gulp.watch(['./demo/**/*.html'], ['html']);
-  gulp.watch(['./**/*.less'], ['styles']);
-  gulp.watch(['./src/**/*.js','./demo/**/*.js', './**/*.html'], ['scripts']);
+  gulp.watch(['./src/**/*.js', './demo/**/*.js', './**/*.html'], ['scripts']);
 });
 
 gulp.task('clean', function(cb) {

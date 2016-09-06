@@ -16,7 +16,6 @@ module.exports = function(config) {
 
       'dist/directive.js',
       'dist/directive.css',
-      'test/**/*.spec.js'
     ],
 
     // List of files to exclude

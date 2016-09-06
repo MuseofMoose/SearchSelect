@@ -1,7 +1,7 @@
 /*!
  * search-select-legacy
  * 
- * Version: 0.0.1 - 2016-09-05T18:27:54.001Z
+ * Version: 0.0.1 - 2016-09-06T00:49:16.151Z
  * License: MIT
  */
 
@@ -66,7 +66,7 @@
 .search-select-container .ss-input-container .icon-base {
   position: absolute;
   z-index: 3;
-  top: calc(36%);
+  top: calc(50% - 14px);
   right: 15px;
   padding-top: 0px;
   font-size: 28px;
