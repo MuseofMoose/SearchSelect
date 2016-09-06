@@ -105,8 +105,8 @@ gulp.task('scripts', ['clean'], function() {
 });
 
 gulp.task('open', function(){
-  gulp.src('./demo/demo.html')
-  .pipe(open('', {url: 'http://localhost:8080/demo/demo.html'}));
+  gulp.src('./demo/index.html')
+  .pipe(open('', {url: 'http://localhost:8080/demo/index.html'}));
 });
 
 gulp.task('jshint-test', function(){
