@@ -22,6 +22,10 @@ and customized by anyone.
 ### Dependencies:
   * ngAnimate, if you want animation when you make your first selection (assuming it starts out empty)
 
+
+---
+
+
 ### In Progress:
   * Package as a module and make it available on Bower
   * Add seperate repo for angular versions that don't include "bindToController"
