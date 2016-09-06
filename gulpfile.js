@@ -39,17 +39,17 @@ gulp.task('connect', function() {
 });
 
 gulp.task('html', function () {
-  gulp.src(['./demo/*.html', '.src/*.html'])
+  gulp.src(['./dist/*.html', '.src/*.html'])
     .pipe(connect.reload());
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['./demo/**/*.html'], ['html']);
-  gulp.watch(['./src/**/*.js', './demo/**/*.js', './**/*.html'], ['scripts']);
+  gulp.watch(['./dist/**/*.html'], ['html']);
+  gulp.watch(['./src/**/*.js', './dist/**/*.js', './**/*.html'], ['scripts']);
 });
 
 gulp.task('clean', function(cb) {
-  del(['dist/**/*'], cb);
+  // del(['dist/**/*'], cb);
 });
 
 gulp.task('scripts', ['clean'], function() {
@@ -105,8 +105,8 @@ gulp.task('scripts', ['clean'], function() {
 });
 
 gulp.task('open', function(){
-  gulp.src('./demo/index.html')
-  .pipe(open('', {url: 'http://localhost:8080/demo/index.html'}));
+  gulp.src('./dist/index.html')
+  .pipe(open('', {url: 'http://localhost:8080/dist/index.html'}));
 });
 
 gulp.task('jshint-test', function(){
