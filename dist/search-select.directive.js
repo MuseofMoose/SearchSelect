@@ -1,7 +1,7 @@
 /*!
  * search-select-legacy
  * 
- * Version: 0.0.1 - 2016-09-06T03:15:07.447Z
+ * Version: 0.0.1 - 2016-09-06T15:14:30.561Z
  * License: MIT
  */
 
@@ -60,7 +60,7 @@
 
 
       $scope.$watch(function(){
-        return vm.options;
+        return $scope.options;
       }, function(newVal, oldVal){
         options = angular.copy($scope.options);
         initializeIndexes();
