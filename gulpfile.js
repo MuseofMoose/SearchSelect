@@ -58,7 +58,7 @@ gulp.task('legacy', ['clean'], function(){
              spare: true,
              quotes: true
             }))
-      .pipe(templateCache({module: 'searchSelectApp'}));
+      .pipe(templateCache({module: 'searchSelect'}));
   };
 
   function buildDistJS(){
