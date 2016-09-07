@@ -2,7 +2,7 @@
   'use strict';
 
 var app = angular
-  .module('demo', ['ngAnimate', 'searchSelectApp'])
+  .module('demo', ['ngAnimate', 'searchSelect'])
   .controller('MainController', MainController);
 
   /** @ngInject */

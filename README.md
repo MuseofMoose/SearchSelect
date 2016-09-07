@@ -24,6 +24,7 @@ and customized by anyone.
 
 ### In Progress:
   * Package as a module and make it available on Bower
+  * Handle option IDing internally (less work for users)
   * Improve this ReadMe
     * Create fleshed out demo page
     * Convert "demo" page to full documentation gh-pages "site"

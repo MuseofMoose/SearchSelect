@@ -11,7 +11,6 @@ var uglify = require('gulp-uglify');
 var minifyHtml = require('gulp-minify-html');
 var minifyCSS = require('gulp-minify-css');
 var templateCache = require('gulp-angular-templatecache');
-var gutil = require('gulp-util');
 var plumber = require('gulp-plumber');
 var open = require('gulp-open');
 var sass = require('gulp-sass');
@@ -51,7 +50,7 @@ gulp.task('watch', function () {
   // gulp.watch(['./src/**/*.js', './dist/**/*.js', './**/*.html'], ['scripts']);
 });
 
-gulp.task('scripts', ['clean'], function() {
+gulp.task('legacy', ['clean'], function(){
   function buildTemplates() {
     return gulp.src('src/**/*.html')
       .pipe(minifyHtml({
@@ -63,7 +62,47 @@ gulp.task('scripts', ['clean'], function() {
   };
 
   function buildDistJS(){
-    return gulp.src('src/search-select.directive.js')
+    return gulp.src('src/pre_1.3_angular/search-select-legacy.js')
+      .pipe(plumber({
+        errorHandler: handleError
+      }))
+      .pipe(jshint())
+      .pipe(jshint.reporter('jshint-stylish'))
+      .pipe(jshint.reporter('fail'));
+  };
+
+  es.merge(buildDistJS(), buildTemplates())
+    .pipe(plumber({
+      errorHandler: handleError
+    }))
+    .pipe(order([
+      'search-select-legacy.js',
+      'template.js'
+    ]))
+    .pipe(concat('search-select-legacy.js'))
+    .pipe(header(config.banner, {
+      timestamp: (new Date()).toISOString(), pkg: config.pkg
+    }))
+    .pipe(gulp.dest('dist'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(uglify({preserveComments: 'some'}))
+    .pipe(gulp.dest('./dist'))
+    .pipe(connect.reload());
+})
+
+gulp.task('scripts', ['clean'], function() {
+  function buildTemplates() {
+    return gulp.src('src/**/*.html')
+      .pipe(minifyHtml({
+             empty: true,
+             spare: true,
+             quotes: true
+            }))
+      .pipe(templateCache({module: 'searchSelect'}));
+  };
+
+  function buildDistJS(){
+    return gulp.src('src/search-select.js')
       .pipe(plumber({
         errorHandler: handleError
       }))
@@ -88,10 +127,10 @@ gulp.task('scripts', ['clean'], function() {
       errorHandler: handleError
     }))
     .pipe(order([
-      'search-select.directive.js',
+      'search-select.js',
       'template.js'
     ]))
-    .pipe(concat('search-select.directive.js'))
+    .pipe(concat('search-select.js'))
     .pipe(header(config.banner, {
       timestamp: (new Date()).toISOString(), pkg: config.pkg
     }))
@@ -101,13 +140,13 @@ gulp.task('scripts', ['clean'], function() {
     .pipe(gulp.dest('./dist'))
     .pipe(connect.reload());
 
-  gulp.src('src/demo.css')
+  gulp.src('src/demo_files/demo.css')
     .pipe(gulp.dest('dist'));
 
-  gulp.src('src/demo.js')
+  gulp.src('src/demo_files/demo.js')
     .pipe(gulp.dest('dist'));
 
-  gulp.src('src/index.html')
+  gulp.src('src/demo_files/index.html')
     .pipe(gulp.dest('dist'));
 
   gulp.src('bower_components/**/*')
@@ -128,6 +167,6 @@ function handleError(err) {
   this.emit('end');
 };
 
-gulp.task('build', ['scripts']);
+gulp.task('build', ['scripts', 'legacy']);
 gulp.task('serve', ['build', 'connect', 'watch', 'open']);
 gulp.task('default', ['build', 'test']);

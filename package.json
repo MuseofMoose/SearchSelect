@@ -1,10 +1,10 @@
 {
-  "name": "search-select-legacy",
+  "name": "search-select",
   "version": "0.0.1",
   "description": "Searchable Select Dropdowns",
   "repository": "https://github.com/MuseofMoose/SearchSelectLegacy.git",
   "main": [
-    "dist/search-select.directive.js",
+    "dist/search-select.js",
     "dist/search-select.css"
   ],
   "keywords": [
