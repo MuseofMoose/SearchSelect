@@ -22,6 +22,8 @@ and customized by anyone.
 
 ---
 
+## Feature Road Map
+
 ### In Progress:
   * Package as a module and make it available on Bower
   * Handle option IDing internally (less work for users)
