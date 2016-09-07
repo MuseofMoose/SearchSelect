@@ -34,5 +34,3 @@ and customized by anyone.
   * Keyboard Tabbing/Arrow Key Support
   * More Custom Styling Options
   * A Couple Default Styling Options to Choose From
-  * Expand to Other Frameworks
-  * Specify Id Key?
