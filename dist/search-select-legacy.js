@@ -1,10 +1,14 @@
 /*!
  * search-select
  * 
- * Version: 0.0.1 - 2016-09-07T15:17:07.390Z
+ * Version: 0.0.1 - 2016-09-07T16:40:43.223Z
  * License: MIT
  */
 
+
+//This version of the js does not use the bindToController feature which was added in
+//Angular 1.3. Thus, it is compatible with Angular 1.2 (and potentially older). Simply add
+//an override to your bower file for search-select and specify this file in the "main" attribute
 
 (function() {
   'use strict';

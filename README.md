@@ -20,6 +20,20 @@ and customized by anyone.
 ### Dependencies:
   * ngAnimate, if you want animation when you make your first selection (assuming it starts out empty)
 
+### Angular 1.2 Support
+An Angular 1.2 compatible version of the js can be found at dist/search-select-legacy.js. In order to use it, simply add an override to your bower.json file like so:
+
+```
+"overrides": {
+  "search-select": {
+    "main": [
+      "dist/search-select-legacy.js",
+      "dist/search-select.css"
+    ],
+  },
+}
+```
+
 ---
 
 ## Feature Road Map
