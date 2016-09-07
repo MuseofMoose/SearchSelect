@@ -24,10 +24,12 @@ and customized by anyone.
 
 ### In Progress:
   * Package as a module and make it available on Bower
-  * Merge SearchSelect and SearchSelectLegacy so I don't go crazy
+  * Improve this ReadMe
+    * Create fleshed out demo page
+    * Convert "demo" page to full documentation gh-pages "site"
+    * Specify usage for pre-1.3 version of angular
 
 ### The Future:
-  * Improve this ReadMe
   * Keyboard Tabbing/Arrow Key Support
   * More Custom Styling Options
   * A Couple Default Styling Options to Choose From
