@@ -34,18 +34,28 @@ An Angular 1.2 compatible version of the js can be found at dist/search-select-l
 }
 ```
 
+Note that you may also need to update the "resolutions" section of your bower file as the search-select module specifies a need for angular/angular-animate 1.3 or higher. To do so, add something like this to your bower.json file (replace the versions to match your project's):
+
+```
+"resolutions": {
+    "angular": "~1.2.0",
+    "angular-animate": "~1.2.0"
+  },
+```
+
 ---
 
 ## Feature Road Map
 
 ### In Progress:
   * Package as a module and make it available on Bower
-  * Improve this ReadMe
-    * Create fleshed out demo page
-    * Convert "demo" page to full documentation gh-pages "site"
+  * Update dependency versions to be less restrictive and more accurate
 
 ### On-Deck
   * Handle option IDing internally (less work for users)
+  * Improve this ReadMe
+    * Create fleshed out demo page
+    * Convert "demo" page to full documentation gh-pages "site"
 
 ### The Distant Future, The Year 2000:
   * Keyboard Tabbing/Arrow Key Support
