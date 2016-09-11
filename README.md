@@ -49,7 +49,6 @@ Note that you may also need to update the "resolutions" section of your bower fi
 
 ### In Progress:
   * Package as a module and make it available on Bower
-  * Update dependency versions to be less restrictive and more accurate
 
 ### On-Deck
   * Handle option IDing internally (less work for users)
@@ -58,6 +57,7 @@ Note that you may also need to update the "resolutions" section of your bower fi
     * Convert "demo" page to full documentation gh-pages "site"
 
 ### The Distant Future, The Year 2000:
+  * Allow specification of attribute to search by.
   * Keyboard Tabbing/Arrow Key Support
   * More Custom Styling Options
   * A Couple Default Styling Options to Choose From
