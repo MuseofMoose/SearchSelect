@@ -48,15 +48,13 @@ Note that you may also need to update the "resolutions" section of your bower fi
 ## Feature Road Map
 
 ### In Progress:
-  * Handle option IDing internally (less work for users)
-  * Allow specification of attribute to search by.
-  * Improve optionLabelKeys parsing.
+  * Instead of requiring an ID attribute, allow specification of an attribute to "ID" by.
+  * Allow specification of an attribute to search by. Can be different from the attribute to "ID" by.
 
 ### On-Deck
   * Improve this ReadMe
     * Create fleshed out demo page
     * Convert "demo" page to full documentation gh-pages "site"
-
 
 ### The Distant Future, The Year 2000:
   * Keyboard Tabbing/Arrow Key Support
