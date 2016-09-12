@@ -1,7 +1,7 @@
 /*!
  * search-select
  * 
- * Version: 1.0.0 - 2016-09-12T04:27:37.369Z
+ * Version: 1.0.0 - 2016-09-12T04:56:39.829Z
  * License: MIT
  */
 

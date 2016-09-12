@@ -57,6 +57,7 @@ Note that you may also need to update the "resolutions" section of your bower fi
     * Convert "demo" page to full documentation gh-pages "site"
 
 ### The Distant Future, The Year 2000:
+  * Consider Pulling the Plug on Legacy Support
   * Keyboard Tabbing/Arrow Key Support
   * More Custom Styling Options
   * A Couple Default Styling Options to Choose From
