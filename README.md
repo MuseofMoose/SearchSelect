@@ -48,16 +48,16 @@ Note that you may also need to update the "resolutions" section of your bower fi
 ## Feature Road Map
 
 ### In Progress:
-  * Package as a module and make it available on Bower
+  * Handle option IDing internally (less work for users)
 
 ### On-Deck
-  * Handle option IDing internally (less work for users)
   * Improve this ReadMe
     * Create fleshed out demo page
     * Convert "demo" page to full documentation gh-pages "site"
+  * Allow specification of attribute to search by.
+
 
 ### The Distant Future, The Year 2000:
-  * Allow specification of attribute to search by.
   * Keyboard Tabbing/Arrow Key Support
   * More Custom Styling Options
   * A Couple Default Styling Options to Choose From
