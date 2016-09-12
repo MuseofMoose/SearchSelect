@@ -19,7 +19,7 @@
   &lt;search-select
     ng-model="main.currentFruitOption"
     options="main.fruitOptions"
-    option-label-keys="name"
+    label-keys="name"
     placeholder-text="Select Fruit"
     font-awesome-icon="fa-lemon-o"&gt;
   &lt;/search-select&gt;
@@ -28,7 +28,7 @@
         <search-select
           ng-model="main.currentFruitOption"
           options="main.fruitOptions"
-          option-label-keys="name"
+          label-keys="name"
           placeholder-text="Select Fruit"
           font-awesome-icon="fa-lemon-o">
         </search-select>
@@ -41,7 +41,7 @@
   &lt;search-select
     ng-model="main.currentUserOption"
     options="main.userOptions"
-    option-label-keys="first_name last_name"
+    label-keys="first_name last_name"
     placeholder-text="Select User"
     font-awesome-icon="fa-user"&gt;
   &lt;/search-select&gt;
@@ -50,11 +50,33 @@
         <search-select
           ng-model="main.currentUserOption"
           options="main.userOptions"
-          option-label-keys="first_name last_name"
+          label-keys="first_name last_name"
           placeholder-text="Select User"
           font-awesome-icon="fa-user">
         </search-select>
         <h4>Selected Option: {{main.currentUserOption}}</h4>
+      </div>
+
+      <div class="usage row">
+        <h3>Example with pre-selected option:</h3>
+<pre>
+  &lt;search-select
+    ng-model="main.currentVideoGameCharacterOption"
+    options="main.videoGameCharacterOptions"
+    label-keys="name"
+    placeholder-text="Select Character"
+    font-awesome-icon="fa-user"&gt;
+  &lt;/search-select&gt;
+</pre>
+        <h3>Results in:</h3>
+        <search-select
+          ng-model="main.currentVideoGameCharacterOption"
+          options="main.videoGameCharacterOptions"
+          label-keys="name"
+          placeholder-text="Select Character"
+          font-awesome-icon="fa-user">
+        </search-select>
+        <h4>Selected Option: {{main.currentVideoGameCharacterOption}}</h4>
       </div>
 
       <div class="bottom-spacer"></div>

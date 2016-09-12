@@ -12,7 +12,7 @@
       scope: {
         ngModel: '=',
         options: '=',
-        optionLabelKeys: '@',
+        labelKeys: '@',
         placeholderText: '@',
         fontAwesomeIcon: '@',
       },
@@ -32,87 +32,70 @@
     function SearchSelectController($scope) {
       var vm = this;
 
-      var options = {};
+      var labelKeys = vm.labelKeys.split(' ');
+      var options = angular.copy(vm.options);
 
-
-      // For older version of angular bindToController doesn't work
-      //and we have to manually store the scope values as vm vars.
-      vm.filteredOptions = angular.copy(vm.options);
+      vm.filteredOptions = {};
       vm.searching = false;
       vm.searchString = '';
       vm.selectedIndex = null;
 
-      vm.initializeSearch = initializeSearch;
       vm.isOptionSelected = isOptionSelected;
+      vm.resetSearch = resetSearch;
       vm.searchOptions = searchOptions;
       vm.selectOption = selectOption;
       vm.setSearchStringToOptionName = setSearchStringToOptionName;
 
-
+      //Watching the option list for pages that may not have
+      //it as soon as the page loads.
       $scope.$watch(function(){
         return vm.options;
       }, function(newVal, oldVal){
         options = angular.copy(vm.options);
-        initializeIndexes();
-        getOptionDisplayNames();
+        intializeSearchSelect();
       }, true);
 
-      function initializeSearch(){
-        vm.searching = true;
-        vm.searchString = '';
-      }
+      function intializeSearchSelect(){
+        if (isUndefined(vm.ngModel)) { return; }
 
-      function initializeIndexes(){
-        if (typeof vm.ngModel === 'undefined'){ return; }
         for (var i=0; i<options.length; i++){
-          options[i].index = i;
-          if (vm.ngModel.id === options[i].id){
-            vm.selectedIndex = i;
-          }
+          setOptionIndex(i);
+          checkIfSelected(i);
+          setOptionDisplayName(i);
         }
-      }
-
-      function getOptionDisplayNames(){
-        //need to make optionlabelkey search a little safer
-        //if object has name and full_name attributes and you specify full_name
-        //in optionLabelKey, both will be added
-
-        for(var i=0; i<options.length; i++){
-          var option = options[i];
-          var display_name = '';
-          for(var key in option){
-            if (vm.optionLabelKeys.indexOf(key) !== -1){
-              display_name += (option[key] + ' ');
-            }
-          }
-          if (display_name !== ''){
-            display_name = display_name.slice(0, -1);
-          }
-          options[i].display_name = display_name;
-        }
-
-        initializeFilteredOptions();
-      }
-
-      function initializeFilteredOptions(){
         vm.filteredOptions = options;
-        for (var i=0; i<vm.filteredOptions.length; i++){
-          vm.filteredOptions[i].index = i;
-        }
-
         setSearchStringToOptionName();
       }
 
-      function setSearchStringToOptionName(){
-        vm.searching = false;
-        if (vm.selectedIndex === null){
-          vm.searchString = "";
-          return;
+      function setOptionIndex(i){
+        options[i].index = i;
+      }
+
+      //Sets selected index if an option is already selected.
+      function checkIfSelected(i){
+        if (vm.ngModel === null) return;
+        if (vm.ngModel.id === options[i].id){
+          vm.ngModel = options[i];
+          vm.selectedIndex = i;
         }
-        if (typeof options[vm.selectedIndex] === 'undefined'){
-          return;
+      }
+
+      //Sets the display_name for an option based on the
+      //keys specified in the labelKeys variable.
+      function setOptionDisplayName(i){
+        var option = options[i];
+        var display_name = '';
+        for (var j=0; j<labelKeys.length; j++){
+          var key = labelKeys[j];
+          if (!isUndefined(option[key])){
+            display_name += (option[key] + ' ');
+          }
         }
-        vm.searchString = options[vm.selectedIndex].display_name;
+        if (display_name !== ''){
+          //Remove the extra space at the end of the string.
+          display_name = display_name.slice(0, -1);
+        }
+        options[i].display_name = display_name;
       }
 
       function selectOption(option){
@@ -122,8 +105,20 @@
         setSearchStringToOptionName();
       }
 
+      function setSearchStringToOptionName(){
+        vm.searching = false;
+        if (vm.selectedIndex === null){
+          vm.searchString = "";
+          return;
+        }
+        if (isUndefined(options[vm.selectedIndex])){
+          return;
+        }
+        vm.searchString = options[vm.selectedIndex].display_name;
+      }
+
       function searchOptions(){
-        if (vm.searchString === '' || typeof vm.searchString === 'undefined'){
+        if (vm.searchString === '' || isUndefined(vm.searchString)){
           vm.filteredOptions = options;
           return;
         }
@@ -141,8 +136,17 @@
         vm.filteredOptions = result;
       }
 
+      function resetSearch(){
+        vm.searching = true;
+        vm.searchString = '';
+      }
+
       function isOptionSelected(){
         return (Object.keys(vm.ngModel).length !== 0 ? true : false);
+      }
+
+      function isUndefined(variable){
+        return (typeof variable === 'undefined' ? true : false);
       }
     }
   }

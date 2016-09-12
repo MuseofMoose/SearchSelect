@@ -11,7 +11,7 @@
       placeholder="{{searchSelect.placeholderText}}"
       ng-class="{'input-expanded': searchSelect.isOptionSelected()}"
       ng-model="searchSelect.searchString"
-      ng-focus="searchSelect.initializeSearch(); searchSelect.searchOptions();"
+      ng-focus="searchSelect.resetSearch(); searchSelect.searchOptions();"
       ng-blur="searchSelect.setSearchStringToOptionName()"
       ng-keyup="searchSelect.searchOptions()"
       ng-required="true">

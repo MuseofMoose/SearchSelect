@@ -49,12 +49,13 @@ Note that you may also need to update the "resolutions" section of your bower fi
 
 ### In Progress:
   * Handle option IDing internally (less work for users)
+  * Allow specification of attribute to search by.
+  * Improve optionLabelKeys parsing.
 
 ### On-Deck
   * Improve this ReadMe
     * Create fleshed out demo page
     * Convert "demo" page to full documentation gh-pages "site"
-  * Allow specification of attribute to search by.
 
 
 ### The Distant Future, The Year 2000:
