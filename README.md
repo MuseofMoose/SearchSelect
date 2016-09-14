@@ -54,13 +54,17 @@ Note that you may also need to update the "resolutions" section of your bower fi
   * Instead of requiring an ID attribute, allow specification of an attribute to "ID" by.
   * Allow specification of an attribute to search by. Can be different from the attribute to "ID" by.
 
-### On-Deck
+### On-Deck:
   * Improve this ReadMe
     * Create fleshed out demo page
     * Convert "demo" page to full documentation gh-pages "site"
 
 ### The Distant Future, The Year 2000:
+  * Better compatibility with tablets and phones (input being hidden by keyboard, need to snap input to top of screen)
   * Consider Pulling the Plug on Legacy Support
   * Keyboard Tabbing/Arrow Key Support
   * More Custom Styling Options
   * A Couple Default Styling Options to Choose From
+
+### Completed:
+  * Improve optionLabelKeys parsing.
