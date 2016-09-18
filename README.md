@@ -3,15 +3,14 @@ Search Select is a simple Angular directive for turning pesky dropdowns into som
 it adds a search bar right into the input, allowing your users to narrow down a dropdown list by typing in key words or letters.
 
 ### Options:
-  * ngModel - An object variable for storing the selected option.
-  * options - An array containing all of the selectable option objects.
-  * idKey (default: 'id') - A string with the attribute to id the option objects by. Use an attribute
+  * **ngModel** - An object variable for storing the selected option.
+  * **options** - An array containing all of the selectable option objects.
+  * **idKey** (default: 'id') - A string with the attribute to id the option objects by. Use an attribute
   that has unique values between options unless you want to have a bad time.
-  * labelKeys - A string with the name of the attributes on the option object to be used as a display name.
-  You can specify multiple keys (space-separate them) if you want them concatenated as one display name.
-  * placeholderText - A string with the placeholder text for the select.
-  * fontAwesomeIcon (optional) - A string with the class name of the font-awesome icon to be displayed on the right side of the input portion of the select.
-  * ngChange (optional) - An expression to be evaluated when the user selects an option.
+  * **labelKeys** - A string with the name of the attributes on the option object to be used as a display name. You can specify multiple keys (space-separate them) if you want them concatenated as one display name.
+  * **placeholderText** - A string with the placeholder text for the select.
+  * **fontAwesomeIcon** (optional) - A string with the class name of the font-awesome icon to be displayed on the right side of the input portion of the select.
+  * **ngChange** (optional) - An expression to be evaluated when the user selects an option.
 
 ### Installation:
 SearchSelect is available through Bower. Simply run the following command from your terminal:
