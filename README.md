@@ -31,9 +31,7 @@ $ bower install --save search-select
 ## Feature Road Map
 
 ### In Progress:
-  * Change names of index and display_name attributes so they are less likely to conflict with
-    passed in objects.
-
+  * Better compatibility with tablets and phones (input being hidden by keyboard, need to snap input to top of screen)
 
 ### On-Deck:
   * Improve this ReadMe
@@ -41,7 +39,6 @@ $ bower install --save search-select
     * Convert "demo" page to full documentation gh-pages "site"
 
 ### The Distant Future, The Year 2000:
-  * Better compatibility with tablets and phones (input being hidden by keyboard, need to snap input to top of screen)
   * Keyboard Tabbing/Arrow Key Support
   * More Custom Styling Options
   * A Couple Default Styling Options to Choose From
@@ -50,4 +47,5 @@ $ bower install --save search-select
   * Improve optionLabelKeys parsing.
   * Pull the plug on Legacy Support
   * Instead of requiring an "id" attribute on options, allow specification of a custom attribute to ID by.
+  * Change names of index and display_name attributes so they are less likely to conflict with passed in objects.
 

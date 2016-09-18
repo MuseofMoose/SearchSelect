@@ -81,7 +81,7 @@
       }
 
       function setOptionIndex(i){
-        options[i].index = i;
+        options[i].ss_index = i;
       }
 
       //Sets selected index if an option is already selected.
@@ -93,27 +93,27 @@
         }
       }
 
-      //Sets the display_name for an option based on the
+      //Sets the ss_display_name for an option based on the
       //keys specified in the labelKeys variable.
       function setOptionDisplayName(i){
         var option = options[i];
-        var display_name = '';
+        var ss_display_name = '';
         for (var j=0; j<labelKeys.length; j++){
           var key = labelKeys[j];
           if (!isUndefined(option[key])){
-            display_name += (option[key] + ' ');
+            ss_display_name += (option[key] + ' ');
           }
         }
-        if (display_name === ''){
+        if (ss_display_name === ''){
           throw 'Error: No option attribute matched with any key in labelKeys.';
         }
-        display_name = display_name.slice(0, -1);
-        options[i].display_name = display_name;
+        ss_display_name = ss_display_name.slice(0, -1);
+        options[i].ss_display_name = ss_display_name;
       }
 
       function selectOption(option){
         vm.ngModel = option;
-        vm.selectedIndex = option.index;
+        vm.selectedIndex = option.ss_index;
         $scope.triggerNgChange(option);
         setSearchStringToOptionName();
       }
@@ -127,7 +127,7 @@
         if (isUndefined(options[vm.selectedIndex])){
           return;
         }
-        vm.searchString = options[vm.selectedIndex].display_name;
+        vm.searchString = options[vm.selectedIndex].ss_display_name;
       }
 
       function searchOptions(){
@@ -140,7 +140,7 @@
         var searchString = vm.searchString.toLowerCase();
 
         for (var i=0; i<options.length; i++){
-          var name = options[i].display_name;
+          var name = options[i].ss_display_name;
           if (name.toLowerCase().indexOf(searchString) !== -1){
             var option = angular.copy(options[i]);
             result.push(option);
