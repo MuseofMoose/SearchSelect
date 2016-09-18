@@ -12,6 +12,7 @@
       scope: {
         ngModel: '=',
         options: '=',
+        idKey: '@',
         labelKeys: '@',
         placeholderText: '@',
         fontAwesomeIcon: '@',
@@ -58,6 +59,8 @@
       function intializeSearchSelect(){
         if (isUndefined(vm.ngModel)) { return; }
 
+        validateParams();
+        setParamDefaults();
         for (var i=0; i<options.length; i++){
           setOptionIndex(i);
           checkIfSelected(i);
@@ -67,14 +70,24 @@
         setSearchStringToOptionName();
       }
 
+      function validateParams(){
+        if (!isUndefined(vm.idKey) && !vm.options[0].hasOwnProperty(vm.idKey)){
+          throw 'Error: No option attribute matched with specified idKey.';
+        }
+      }
+
+      function setParamDefaults(){
+        if (isUndefined(vm.idKey)) { vm.idKey = 'id'; }
+      }
+
       function setOptionIndex(i){
         options[i].index = i;
       }
 
       //Sets selected index if an option is already selected.
       function checkIfSelected(i){
-        if (vm.ngModel === null) return;
-        if (vm.ngModel.id === options[i].id){
+        if (vm.ngModel === null) { return; }
+        if (vm.ngModel[vm.idKey] === options[i][vm.idKey]){
           vm.ngModel = options[i];
           vm.selectedIndex = i;
         }
@@ -91,10 +104,10 @@
             display_name += (option[key] + ' ');
           }
         }
-        if (display_name !== ''){
-          //Remove the extra space at the end of the string.
-          display_name = display_name.slice(0, -1);
+        if (display_name === ''){
+          throw 'Error: No option attribute matched with any key in labelKeys.';
         }
+        display_name = display_name.slice(0, -1);
         options[i].display_name = display_name;
       }
 

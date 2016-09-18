@@ -58,11 +58,12 @@
       </div>
 
       <div class="usage row">
-        <h3>Example with pre-selected option:</h3>
+        <h3>Example with pre-selected option and custom idKey:</h3>
 <pre>
   &lt;search-select
     ng-model="main.currentVideoGameCharacterOption"
     options="main.videoGameCharacterOptions"
+    id-key="characterId"
     label-keys="name"
     placeholder-text="Select Character"
     font-awesome-icon="fa-user"&gt;
@@ -72,6 +73,7 @@
         <search-select
           ng-model="main.currentVideoGameCharacterOption"
           options="main.videoGameCharacterOptions"
+          id-key="characterId"
           label-keys="name"
           placeholder-text="Select Character"
           font-awesome-icon="fa-user">

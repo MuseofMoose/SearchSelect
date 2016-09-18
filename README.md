@@ -31,7 +31,6 @@ $ bower install --save search-select
 ## Feature Road Map
 
 ### In Progress:
-  * Instead of requiring an ID attribute, allow specification of an attribute to "ID" by.
   * Change names of index and display_name attributes so they are less likely to conflict with
     passed in objects.
 
@@ -50,3 +49,5 @@ $ bower install --save search-select
 ### Completed:
   * Improve optionLabelKeys parsing.
   * Pull the plug on Legacy Support
+  * Instead of requiring an "id" attribute on options, allow specification of a custom attribute to ID by.
+

@@ -11,7 +11,7 @@ var app = angular
 
     vm.currentFruitOption = {};
     vm.currentUserOption = {};
-    vm.currentVideoGameCharacterOption = { id: 6, name: 'Sonic', weapon: 'Speed' }
+    vm.currentVideoGameCharacterOption = { characterId: 6, name: 'Sonic', weapon: 'Speed' }
 ;
 
     vm.fruitOptions = [
@@ -38,14 +38,14 @@ var app = angular
     ]
 
     vm.videoGameCharacterOptions = [
-      { id: 1, name: 'Link', weapon: 'Sword', },
-      { id: 2, name: 'Snake', weapon: 'Explosives', },
-      { id: 3, name: 'Peach', weapon: 'Turnips', },
-      { id: 4, name: 'Samus', weapon: 'Arm Cannon', },
-      { id: 5, name: 'Pac-Man', weapon: 'Mouth', },
-      { id: 6, name: 'Sonic', weapon: 'Speed', },
-      { id: 7, name: 'Infernape', weapon: 'Fire', },
-      { id: 8, name: 'Mia', weapon: 'Clumsiness', },
+      { characterId: 1, name: 'Link', weapon: 'Sword', },
+      { characterId: 2, name: 'Snake', weapon: 'Explosives', },
+      { characterId: 3, name: 'Peach', weapon: 'Turnips', },
+      { characterId: 4, name: 'Samus', weapon: 'Arm Cannon', },
+      { characterId: 5, name: 'Pac-Man', weapon: 'Mouth', },
+      { characterId: 6, name: 'Sonic', weapon: 'Speed', },
+      { characterId: 7, name: 'Infernape', weapon: 'Fire', },
+      { characterId: 8, name: 'Mia', weapon: 'Clumsiness', },
     ]
   }
 
