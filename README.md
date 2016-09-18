@@ -3,12 +3,15 @@ Search Select is a simple Angular directive for turning pesky dropdowns into som
 it adds a search bar right into the input, allowing your users to narrow down a dropdown list by typing in key words or letters.
 
 ### Options:
-  * ngModel - an object variable for storing the selected option
-  * options - an array containing all of the selectable option objects
-  * labelKeys - a string with the name of the key on the option object to be used a display name
-  * placeholderText - a string with the placeholder text for the select
-  * fontAwesomeIcon (optional) - a string with the class name of the font-awesome icon to be displayed on the right side of the input portion of the select
-  * ngChange (optional) - an expression to be evaluated when the user selects an option
+  * ngModel - An object variable for storing the selected option.
+  * options - An array containing all of the selectable option objects.
+  * idKey (default: 'id') - A string with the attribute to id the option objects by. Use an attribute
+  that has unique values between options unless you want to have a bad time.
+  * labelKeys - A string with the name of the attributes on the option object to be used as a display name.
+  You can specify multiple keys (space-separate them) if you want them concatenated as one display name.
+  * placeholderText - A string with the placeholder text for the select.
+  * fontAwesomeIcon (optional) - A string with the class name of the font-awesome icon to be displayed on the right side of the input portion of the select.
+  * ngChange (optional) - An expression to be evaluated when the user selects an option.
 
 ### Installation:
 SearchSelect is available through Bower. Simply run the following command from your terminal:
@@ -23,36 +26,15 @@ $ bower install --save search-select
 ### Dependencies:
   * ngAnimate, if you want animation when you make your first selection (assuming it starts out empty)
 
-### Angular 1.2 Support
-An Angular 1.2 compatible version of the js can be found at dist/search-select-legacy.js. In order to use it, simply add an override to your bower.json file like so:
-
-```
-"overrides": {
-  "search-select": {
-    "main": [
-      "dist/search-select-legacy.js",
-      "dist/search-select.css"
-    ],
-  },
-}
-```
-
-Note that you may also need to update the "resolutions" section of your bower file as the search-select module specifies a need for angular/angular-animate 1.3 or higher. To do so, add something like this to your bower.json file (replace the versions to match your project's):
-
-```
-"resolutions": {
-    "angular": "~1.2.0",
-    "angular-animate": "~1.2.0"
-  },
-```
-
 ---
 
 ## Feature Road Map
 
 ### In Progress:
   * Instead of requiring an ID attribute, allow specification of an attribute to "ID" by.
-  * Allow specification of an attribute to search by. Can be different from the attribute to "ID" by.
+  * Change names of index and display_name attributes so they are less likely to conflict with
+    passed in objects.
+
 
 ### On-Deck:
   * Improve this ReadMe
@@ -61,10 +43,10 @@ Note that you may also need to update the "resolutions" section of your bower fi
 
 ### The Distant Future, The Year 2000:
   * Better compatibility with tablets and phones (input being hidden by keyboard, need to snap input to top of screen)
-  * Consider Pulling the Plug on Legacy Support
   * Keyboard Tabbing/Arrow Key Support
   * More Custom Styling Options
   * A Couple Default Styling Options to Choose From
 
 ### Completed:
   * Improve optionLabelKeys parsing.
+  * Pull the plug on Legacy Support
