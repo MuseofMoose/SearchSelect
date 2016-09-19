@@ -35,17 +35,19 @@
 
       var labelKeys = vm.labelKeys.split(' ');
       var options = angular.copy(vm.options);
+      var readyForKeyInput = true;
 
       vm.filteredOptions = {};
+      vm.keyboardFocusIndex = null;
       vm.searching = false;
       vm.searchString = '';
       vm.selectedIndex = null;
 
+      vm.ssBlur = ssBlur;
+      vm.ssFocus = ssFocus;
       vm.isOptionSelected = isOptionSelected;
-      vm.resetSearch = resetSearch;
       vm.searchOptions = searchOptions;
       vm.selectOption = selectOption;
-      vm.setSearchStringToOptionName = setSearchStringToOptionName;
 
       //Watching the option list for pages that may not have
       //it as soon as the page loads.
@@ -130,6 +132,22 @@
         vm.searchString = options[vm.selectedIndex].ss_display_name;
       }
 
+      //Enables arrow key detection and resets search.
+      function ssFocus(){
+        angular.element(document).on('keydown', keyboardNavigation);
+        angular.element(document).on('keyup', refreshKeyInput);
+        resetSearch();
+        searchOptions();
+      }
+
+      //Disables arrow key detection and sets the displayed input string.
+      function ssBlur(){
+        vm.keyboardFocusIndex = null;
+        angular.element(document).off('keydown', keyboardNavigation);
+        angular.element(document).off('keyup', refreshKeyInput);
+        setSearchStringToOptionName();
+      }
+
       function searchOptions(){
         if (vm.searchString === '' || isUndefined(vm.searchString)){
           vm.filteredOptions = options;
@@ -160,6 +178,58 @@
 
       function isUndefined(variable){
         return (typeof variable === 'undefined' ? true : false);
+      }
+
+      //Handles key inputs while focused on search-select.
+      function keyboardNavigation(e){
+        if (readyForKeyInput === false){
+          return;
+        }
+
+        var key = e.keyCode ? e.keyCode : e.which;
+        readyForKeyInput = false;
+
+        //Close out search on escape key press.
+        if (key === 27){
+          e.target.blur();
+          readyForKeyInput = true;
+        }
+
+        //Close out search and select option on enter key press.
+        if (key === 13){
+          if (vm.keyboardFocusIndex === null){
+            return;
+          }
+          selectOption(vm.filteredOptions[vm.keyboardFocusIndex]);
+          e.target.blur();
+          readyForKeyInput = true;
+        }
+
+        //Move to next option on down key press.
+        if (key === 40){
+          if (vm.keyboardFocusIndex === null){
+            vm.keyboardFocusIndex = 0;
+            $scope.$apply();
+            return;
+          }
+          if (vm.keyboardFocusIndex >= vm.filteredOptions.length - 1){
+            return;
+          }
+          vm.keyboardFocusIndex += 1;
+        }
+
+        //Move to previous option on up key press.
+        if (key === 38){
+          if (vm.keyboardFocusIndex === 0 || vm.keyboardFocusIndex === null){
+            return;
+          }
+          vm.keyboardFocusIndex -= 1;
+        }
+        $scope.$apply();
+      }
+
+      function refreshKeyInput(e){
+        readyForKeyInput = true;
       }
     }
   }

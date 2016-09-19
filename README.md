@@ -30,15 +30,16 @@ $ bower install --save search-select
 ## Feature Road Map
 
 ### In Progress:
-  * Better compatibility with tablets and phones (input being hidden by keyboard, need to snap input to top of screen)
+  * Keyboard Tabbing/Arrow Key Support
 
 ### On-Deck:
   * Improve this ReadMe
     * Create fleshed out demo page
     * Convert "demo" page to full documentation gh-pages "site"
+  * Add param for disabling the search-select-input.
 
 ### The Distant Future, The Year 2000:
-  * Keyboard Tabbing/Arrow Key Support
+  * Enhance visual look of searching (bold matched substring in results?)
   * More Custom Styling Options
   * A Couple Default Styling Options to Choose From
 

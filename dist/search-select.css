@@ -1,7 +1,7 @@
 /*!
  * search-select
  * 
- * Version: 1.0.0 - 2016-09-18T02:25:21.480Z
+ * Version: 1.0.0 - 2016-09-19T05:29:09.001Z
  * License: MIT
  */
 
@@ -111,6 +111,9 @@
   padding: 5px 15px 5px 15px;
   font-size: 20px;
   cursor: pointer;
+}
+.search-select-container .results-container .option-list .option-list-item.kb-focused {
+  background-color: #ececec;
 }
 .search-select-container .results-container .option-list .option-list-item:hover {
   background-color: #ececec;

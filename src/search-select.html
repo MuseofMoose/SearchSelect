@@ -11,8 +11,8 @@
       placeholder="{{searchSelect.placeholderText}}"
       ng-class="{'input-expanded': searchSelect.isOptionSelected()}"
       ng-model="searchSelect.searchString"
-      ng-focus="searchSelect.resetSearch(); searchSelect.searchOptions();"
-      ng-blur="searchSelect.setSearchStringToOptionName()"
+      ng-focus="searchSelect.ssFocus()"
+      ng-blur="searchSelect.ssBlur()"
       ng-keyup="searchSelect.searchOptions()"
       ng-required="true">
 
@@ -23,7 +23,8 @@
   <div class="results-container" ng-show="searchSelect.searching">
     <ul class="option-list" ng-show="searchSelect.filteredOptions.length > 0">
       <li class="option-list-item"
-        ng-repeat="option in searchSelect.filteredOptions"
+        ng-class="{'kb-focused': searchSelect.keyboardFocusIndex === $index}"
+        ng-repeat="option in searchSelect.filteredOptions track by $index"
         ng-mousedown="searchSelect.selectOption(option)">
         {{option.ss_display_name}}
       </li>
