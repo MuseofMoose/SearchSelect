@@ -9,6 +9,7 @@
     <input name="search_string" type="text"
       class="input-base"
       placeholder="{{searchSelect.placeholderText}}"
+      autocomplete="off"
       ng-class="{'input-expanded': searchSelect.isOptionSelected()}"
       ng-model="searchSelect.searchString"
       ng-focus="searchSelect.ssFocus()"
@@ -21,8 +22,8 @@
   </div>
 
   <div class="results-container" ng-show="searchSelect.searching">
-    <ul class="option-list" ng-show="searchSelect.filteredOptions.length > 0">
-      <li class="option-list-item"
+    <ul id="option-list" class="option-list" ng-show="searchSelect.filteredOptions.length > 0">
+      <li id="option-list-item-{{$index}}" class="option-list-item"
         ng-class="{'kb-focused': searchSelect.keyboardFocusIndex === $index}"
         ng-repeat="option in searchSelect.filteredOptions track by $index"
         ng-mousedown="searchSelect.selectOption(option)">

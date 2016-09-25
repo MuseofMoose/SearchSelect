@@ -30,16 +30,15 @@ $ bower install --save search-select
 ## Feature Road Map
 
 ### In Progress:
-  * Keyboard Tabbing/Arrow Key Support
+  * Add param for disabling the search-select-input.
 
 ### On-Deck:
+  * Enhance visual look of searching (bold matched substring in results?)
   * Improve this ReadMe
     * Create fleshed out demo page
     * Convert "demo" page to full documentation gh-pages "site"
-  * Add param for disabling the search-select-input.
 
 ### The Distant Future, The Year 2000:
-  * Enhance visual look of searching (bold matched substring in results?)
   * More Custom Styling Options
   * A Couple Default Styling Options to Choose From
 
@@ -48,4 +47,4 @@ $ bower install --save search-select
   * Pull the plug on Legacy Support
   * Instead of requiring an "id" attribute on options, allow specification of a custom attribute to ID by.
   * Change names of index and display_name attributes so they are less likely to conflict with passed in objects.
-
+  * Keyboard Support

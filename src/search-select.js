@@ -33,6 +33,7 @@
     function SearchSelectController($scope) {
       var vm = this;
 
+      var inputHandler = new KeyInputHandler();
       var labelKeys = vm.labelKeys.split(' ');
       var options = angular.copy(vm.options);
       var readyForKeyInput = true;
@@ -134,7 +135,7 @@
 
       //Enables arrow key detection and resets search.
       function ssFocus(){
-        angular.element(document).on('keydown', keyboardNavigation);
+        angular.element(document).on('keydown', inputHandler.run);
         angular.element(document).on('keyup', refreshKeyInput);
         resetSearch();
         searchOptions();
@@ -143,7 +144,7 @@
       //Disables arrow key detection and sets the displayed input string.
       function ssBlur(){
         vm.keyboardFocusIndex = null;
-        angular.element(document).off('keydown', keyboardNavigation);
+        angular.element(document).off('keydown', inputHandler.run);
         angular.element(document).off('keyup', refreshKeyInput);
         setSearchStringToOptionName();
       }
@@ -180,23 +181,50 @@
         return (typeof variable === 'undefined' ? true : false);
       }
 
-      //Handles key inputs while focused on search-select.
-      function keyboardNavigation(e){
-        if (readyForKeyInput === false){
-          return;
+      //An object for handling key inputs while focused on search-select.
+      function KeyInputHandler(){
+
+        this.run = function(e){
+          if (readyForKeyInput === false){
+            return;
+          }
+          var key = e.keyCode ? e.keyCode : e.which;
+          readyForKeyInput = false;
+
+          if (key === 38) { up(); }
+          if (key === 40) { down(); }
+          if (key === 13) { enter(e); }
+          if (key === 27) { escape(e); }
+
+          $scope.$apply();
+        };
+
+        //Move to previous option on up key press.
+        function up(){
+          if (vm.keyboardFocusIndex === 0 || vm.keyboardFocusIndex === null){
+            return;
+          }
+          vm.keyboardFocusIndex -= 1;
+          adjustScroll(false);
         }
 
-        var key = e.keyCode ? e.keyCode : e.which;
-        readyForKeyInput = false;
-
-        //Close out search on escape key press.
-        if (key === 27){
-          e.target.blur();
-          readyForKeyInput = true;
+        //Move to next option on down key press.
+        function down(){
+          if (vm.keyboardFocusIndex === null){
+            vm.keyboardFocusIndex = 0;
+            adjustScroll(true);
+            $scope.$apply();
+            return;
+          }
+          if (vm.keyboardFocusIndex >= vm.filteredOptions.length - 1){
+            return;
+          }
+          vm.keyboardFocusIndex += 1;
+          adjustScroll(true);
         }
 
         //Close out search and select option on enter key press.
-        if (key === 13){
+        function enter(e){
           if (vm.keyboardFocusIndex === null){
             return;
           }
@@ -205,27 +233,35 @@
           readyForKeyInput = true;
         }
 
-        //Move to next option on down key press.
-        if (key === 40){
-          if (vm.keyboardFocusIndex === null){
-            vm.keyboardFocusIndex = 0;
-            $scope.$apply();
-            return;
-          }
-          if (vm.keyboardFocusIndex >= vm.filteredOptions.length - 1){
-            return;
-          }
-          vm.keyboardFocusIndex += 1;
+        //Close out search on escape key press.
+        function escape(e){
+          e.target.blur();
+          readyForKeyInput = true;
         }
 
-        //Move to previous option on up key press.
-        if (key === 38){
-          if (vm.keyboardFocusIndex === 0 || vm.keyboardFocusIndex === null){
-            return;
+        //Adjusts the scroll value of the list based on which listItem is currently focused.
+        function adjustScroll(isDownKey){
+          var listId = 'option-list';
+          var listItemId = 'option-list-item-' + vm.keyboardFocusIndex;
+
+          //Gets the "next" list item based on whether the down key or up key was pressed.
+          var nextListItemDirection = isDownKey ? 1 : -1;
+          var nextListItemId = 'option-list-item-' + (vm.keyboardFocusIndex + nextListItemDirection);
+
+          var list = document.getElementById(listId);
+          var listItem = document.getElementById(listItemId);
+          var nextListItem = document.getElementById(nextListItemId) || listItem;
+
+          //Adjusts scroll value when the nextListItem is ~below~ the viewable window.
+          if (nextListItem.offsetTop >= (list.offsetHeight + list.scrollTop)){
+            list.scrollTop = nextListItem.offsetTop - list.offsetHeight + nextListItem.offsetHeight;
           }
-          vm.keyboardFocusIndex -= 1;
+
+          //Adjusts scroll value when the nextListItem is ~above~ the viewable window.
+          if (list.scrollTop > nextListItem.offsetTop){
+            list.scrollTop = nextListItem.offsetTop;
+          }
         }
-        $scope.$apply();
       }
 
       function refreshKeyInput(e){
