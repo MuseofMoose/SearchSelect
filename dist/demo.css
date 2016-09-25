@@ -8,3 +8,19 @@
 .bottom-spacer {
   height: 300px;
 }
+
+.instructions {
+  font-size: 18px;
+}
+
+.instructions p {
+  display: block;
+  margin-left: 20px;
+}
+
+.instructions p.title {
+  margin-top: 25px;
+  margin-bottom: 10px;
+
+  font-size: 20px;
+}

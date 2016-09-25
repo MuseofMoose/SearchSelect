@@ -21,6 +21,9 @@ $ bower install --save search-select
 
 ### Usage:
   * Some simple examples can be found [here.](https://museofmoose.github.io/SearchSelect/dist/)
+  * You can scroll through the options with a mouse or via the arrow keys.
+  * Select an option by clicking or hitting enter/ Close out of the dropdown by clicking away or hitting escape.
+  * Narrow down the option list by typing into the input.
 
 ### Dependencies:
   * ngAnimate, if you want animation when you make your first selection (assuming it starts out empty)
