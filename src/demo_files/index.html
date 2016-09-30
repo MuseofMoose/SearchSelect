@@ -13,13 +13,23 @@
     <div class="container" ng-controller="MainController as main">
       <h1 class="text-muted">Demo</h1>
 
+      <div class="instructions usage row">
+        <h3>Instructions:</h3>
+        <p class="title">* Mouse Controls</p>
+        <p>Move with the mouse, click an option to select, click away from the dropdown to close.</p>
+        <p class="title">* Keyboard Controls</p>
+        <p>Up/Down to move, Enter to select, Escape to close.</p>
+        <p class="title">* Searching</p>
+        <p>Type into the input to narrow down the option list.</p>
+      </div>
+
       <div class="usage row" >
         <h3>Basic example:</h3>
 <pre>
   &lt;search-select
     ng-model="main.currentFruitOption"
     options="main.fruitOptions"
-    option-label-keys="name"
+    label-keys="name"
     placeholder-text="Select Fruit"
     font-awesome-icon="fa-lemon-o"&gt;
   &lt;/search-select&gt;
@@ -28,7 +38,7 @@
         <search-select
           ng-model="main.currentFruitOption"
           options="main.fruitOptions"
-          option-label-keys="name"
+          label-keys="name"
           placeholder-text="Select Fruit"
           font-awesome-icon="fa-lemon-o">
         </search-select>
@@ -41,7 +51,7 @@
   &lt;search-select
     ng-model="main.currentUserOption"
     options="main.userOptions"
-    option-label-keys="first_name last_name"
+    label-keys="first_name last_name"
     placeholder-text="Select User"
     font-awesome-icon="fa-user"&gt;
   &lt;/search-select&gt;
@@ -50,11 +60,35 @@
         <search-select
           ng-model="main.currentUserOption"
           options="main.userOptions"
-          option-label-keys="first_name last_name"
+          label-keys="first_name last_name"
           placeholder-text="Select User"
           font-awesome-icon="fa-user">
         </search-select>
         <h4>Selected Option: {{main.currentUserOption}}</h4>
+      </div>
+
+      <div class="usage row">
+        <h3>Example with pre-selected option and custom idKey:</h3>
+<pre>
+  &lt;search-select
+    ng-model="main.currentVideoGameCharacterOption"
+    options="main.videoGameCharacterOptions"
+    id-key="characterId"
+    label-keys="name"
+    placeholder-text="Select Character"
+    font-awesome-icon="fa-user"&gt;
+  &lt;/search-select&gt;
+</pre>
+        <h3>Results in:</h3>
+        <search-select
+          ng-model="main.currentVideoGameCharacterOption"
+          options="main.videoGameCharacterOptions"
+          id-key="characterId"
+          label-keys="name"
+          placeholder-text="Select Character"
+          font-awesome-icon="fa-user">
+        </search-select>
+        <h4>Selected Option: {{main.currentVideoGameCharacterOption}}</h4>
       </div>
 
       <div class="bottom-spacer"></div>
