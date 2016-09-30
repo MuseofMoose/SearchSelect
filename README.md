@@ -1,4 +1,4 @@
-# SearchSelect v1.1.0
+# SearchSelect v 1.1.0
 Search Select is a simple Angular directive for turning pesky dropdowns into something much more user friendly. More specifically,
 it adds a search bar right into the input, allowing your users to narrow down a dropdown list by typing in key words or letters.
 
