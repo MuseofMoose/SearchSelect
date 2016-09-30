@@ -26,7 +26,8 @@ $ bower install --save search-select
   * Narrow down the option list by typing into the input.
 
 ### Dependencies:
-  * ngAnimate, if you want animation when you make your first selection (assuming it starts out empty)
+  * angular 1.3.0
+  * angular-animate 1.3.0, if you want animation when you make your first selection.
 
 ---
 
