@@ -19,13 +19,6 @@ SearchSelect is available through Bower. Simply run the following command from y
 $ bower install --save search-select
 ```
 
-### Installation:
-SearchSelect is available through Bower. Simply run the following command from your terminal:
-
-```sh
-$ bower install --save search-select
-```
-
 ### Usage:
   * Some simple examples can be found [here.](https://museofmoose.github.io/SearchSelect/dist/)
   * You can scroll through the options with a mouse or via the arrow keys.
