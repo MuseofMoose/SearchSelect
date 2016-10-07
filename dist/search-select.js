@@ -1,7 +1,7 @@
 /*!
  * search-select
  * 
- * Version: 1.1.0 - 2016-10-06T23:00:53.106Z
+ * Version: 1.2.0 - 2016-10-07T00:06:19.454Z
  * License: MIT
  */
 
@@ -195,7 +195,6 @@
 
       //An object for handling key inputs while focused on search-select.
       function KeyInputHandler(){
-
         this.run = function(e){
           if (readyForKeyInput === false){
             return;
