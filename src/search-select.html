@@ -1,4 +1,5 @@
-<div class="search-select-container">
+<div class="search-select-container"
+  ng-class="{'disabled': searchSelect.disabled}">
     <div class="ss-input-container"
     ng-class="{'container-expanded': searchSelect.isOptionSelected()}">
     <div class="cover-base"
@@ -15,7 +16,8 @@
       ng-focus="searchSelect.ssFocus()"
       ng-blur="searchSelect.ssBlur()"
       ng-keyup="searchSelect.searchOptions()"
-      ng-required="true">
+      ng-required="searchSelect.required"
+      ng-disabled="searchSelect.disabled">
 
     <i class="icon-base fa"
       ng-class="{'icon-expanded': searchSelect.isOptionSelected(), '{{searchSelect.fontAwesomeIcon}}': true}"></i>

@@ -12,7 +12,7 @@ var app = angular
     vm.currentFruitOption = {};
     vm.currentUserOption = {};
     vm.currentVideoGameCharacterOption = { characterId: 6, name: 'Sonic', weapon: 'Speed' }
-;
+    vm.disabled = false;
 
     vm.fruitOptions = [
       { id: 1, name: 'Apple', },

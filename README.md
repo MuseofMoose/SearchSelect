@@ -1,4 +1,4 @@
-# SearchSelect v 1.1.0
+# SearchSelect v 1.2.0
 Search Select is a simple Angular directive for turning pesky dropdowns into something much more user friendly. More specifically,
 it adds a search bar right into the input, allowing your users to narrow down a dropdown list by typing in key words or letters.
 
@@ -11,6 +11,8 @@ it adds a search bar right into the input, allowing your users to narrow down a 
   * **placeholderText** - A string with the placeholder text for the select.
   * **fontAwesomeIcon** (optional) - A string with the class name of the font-awesome icon to be displayed on the right side of the input portion of the select.
   * **ngChange** (optional) - An expression to be evaluated when the user selects an option.
+  * **ngDisabled** (optional) - A boolean expression which represents whether the searchselect is disabled or not.
+  * **ngRequired** (optional) - A boolean expression which represents whether the searchselect is required or not.
 
 ### Installation:
 SearchSelect is available through Bower. Simply run the following command from your terminal:
@@ -20,7 +22,7 @@ $ bower install --save search-select
 ```
 
 ### Usage:
-  * Some simple examples can be found [here.](https://museofmoose.github.io/SearchSelect/dist/)
+  * Some examples can be found [here.](https://museofmoose.github.io/SearchSelect/dist/)
   * You can scroll through the options with a mouse or via the arrow keys.
   * Select an option by clicking or hitting enter/ Close out of the dropdown by clicking away or hitting escape.
   * Narrow down the option list by typing into the input.
@@ -34,14 +36,9 @@ $ bower install --save search-select
 ## Feature Road Map
 
 ### In Progress:
-  * Add param for disabling the search-select-input.
+  * Enhance visual look of searching (bold matched substring in results?)
 
 ### On-Deck:
-  * Enhance visual look of searching (bold matched substring in results?)
   * Improve this ReadMe
     * Create fleshed out demo page
     * Convert "demo" page to full documentation gh-pages "site"
-
-### The Distant Future, The Year 2000:
-  * More Custom Styling Options
-  * A Couple Default Styling Options to Choose From

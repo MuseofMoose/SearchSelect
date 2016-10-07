@@ -46,29 +46,42 @@
       </div>
 
       <div class="usage row">
-        <h3>Example with multiple label-keys:</h3>
+        <h3>Multiple label-keys and Disabling:</h3>
+        <h5>Controller:</h5>
 <pre>
+  vm.disabled = false;
+</pre>
+        <h5>HTML:</h5>
+<pre>
+  &lt;button ng-click="main.disabled = !main.disabled"&gt;
+    Toggle Disable Value
+  &lt;/button&gt;
+
   &lt;search-select
     ng-model="main.currentUserOption"
     options="main.userOptions"
     label-keys="first_name last_name"
     placeholder-text="Select User"
-    font-awesome-icon="fa-user"&gt;
+    font-awesome-icon="fa-user"
+    disabled="main.disabled"&gt;
   &lt;/search-select&gt;
 </pre>
         <h3>Results in:</h3>
+        <button ng-click="main.disabled = !main.disabled">Toggle Disable Value</button>
         <search-select
           ng-model="main.currentUserOption"
           options="main.userOptions"
           label-keys="first_name last_name"
           placeholder-text="Select User"
-          font-awesome-icon="fa-user">
+          font-awesome-icon="fa-user"
+          disabled="main.disabled">
         </search-select>
         <h4>Selected Option: {{main.currentUserOption}}</h4>
+        <h4>Disabled: {{main.disabled}}</h4>
       </div>
 
       <div class="usage row">
-        <h3>Example with pre-selected option and custom idKey:</h3>
+        <h3>Pre-selected option and Custom idKey:</h3>
         <h5>Controller:</h5>
 <pre>
   vm.currentVideoGameCharacterOption = { characterId: 6, name: 'Sonic', weapon: 'Speed' }

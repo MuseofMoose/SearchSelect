@@ -1,7 +1,7 @@
 /*!
  * search-select
  * 
- * Version: 1.1.0 - 2016-09-30T17:16:58.113Z
+ * Version: 1.1.0 - 2016-10-06T23:00:53.068Z
  * License: MIT
  */
 
@@ -9,6 +9,9 @@
 .search-select-container {
   position: relative;
   font-weight: 300;
+}
+.search-select-container.disabled {
+  opacity: .5;
 }
 .search-select-container div,
 .search-select-container ul,

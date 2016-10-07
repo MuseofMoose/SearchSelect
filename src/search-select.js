@@ -12,6 +12,8 @@
       scope: {
         ngModel: '=',
         options: '=',
+        disabled: '=?',
+        required: '=?',
         idKey: '@',
         labelKeys: '@',
         placeholderText: '@',
@@ -135,6 +137,8 @@
 
       //Enables arrow key detection and resets search.
       function ssFocus(){
+        if (vm.disabled) { return; }
+
         angular.element(document).on('keydown', inputHandler.run);
         angular.element(document).on('keyup', refreshKeyInput);
         resetSearch();
@@ -183,7 +187,6 @@
 
       //An object for handling key inputs while focused on search-select.
       function KeyInputHandler(){
-
         this.run = function(e){
           if (readyForKeyInput === false){
             return;
