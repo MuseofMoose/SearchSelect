@@ -12,7 +12,7 @@ it adds a search bar right into the input, allowing your users to narrow down a 
   * **fontAwesomeIcon** (optional) - A string with the class name of the font-awesome icon to be displayed on the right side of the input portion of the select.
   * **ngChange** (optional) - An expression to be evaluated when the user selects an option.
   * **disabled** (optional) - A boolean expression which represents whether the searchselect is disabled or not.
-  * **required** (optional) - A boolean expression which represents whether the searchselect is required or not.
+  * **required** (optional) - A boolean expression which represents whether the searchselect is required or not (for form validity).
 
 ### Installation:
 SearchSelect is available through Bower. Simply run the following command from your terminal:
