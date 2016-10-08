@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('searchSelect', []).directive('searchSelect', searchSelect);
+  angular.module('searchSelect', ['ngSanitize']).directive('searchSelect', searchSelect);
 
   /** @ngInject */
   function searchSelect() {
@@ -32,7 +32,7 @@
     return directive;
 
     /** @ngInject */
-    function SearchSelectController($scope) {
+    function SearchSelectController($scope, $sanitize) {
       var vm = this;
 
       var inputHandler = new KeyInputHandler();
@@ -114,6 +114,7 @@
         }
         ss_display_name = ss_display_name.slice(0, -1);
         options[i].ss_display_name = ss_display_name;
+        options[i].ss_display_html = $sanitize(ss_display_name);
       }
 
       function selectOption(option){
@@ -164,8 +165,15 @@
 
         for (var i=0; i<options.length; i++){
           var name = options[i].ss_display_name;
-          if (name.toLowerCase().indexOf(searchString) !== -1){
+          var searchIndex = name.toLowerCase().indexOf(searchString);
+          if (searchIndex !== -1){
             var option = angular.copy(options[i]);
+            var substringOne = option.ss_display_name.substring(0, searchIndex);
+            var substringTwo = option.ss_display_name.substring(searchIndex, searchIndex + searchString.length);
+            var substringThree = option.ss_display_name.substring(searchIndex + searchString.length);
+
+            option.ss_display_html = buildDisplayHtml(substringOne, substringTwo, substringThree);
+
             result.push(option);
           }
         }
@@ -269,6 +277,13 @@
 
       function refreshKeyInput(e){
         readyForKeyInput = true;
+      }
+
+      function buildDisplayHtml(substringOne, substringTwo, substringThree){
+        var displayHtml = '';
+        var boldSubstring = '<span class="search-bold">' + substringTwo + '</span>';
+
+        return $sanitize(substringOne + boldSubstring + substringThree);
       }
     }
   }

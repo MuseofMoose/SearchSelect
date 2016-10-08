@@ -42,7 +42,7 @@
           placeholder-text="Select Fruit"
           font-awesome-icon="fa-lemon-o">
         </search-select>
-        <h4>Selected Option: {{main.currentFruitOption}}</h4>
+        <h4>Selected Option: {{main.cleanOption(main.currentFruitOption)}}</h4>
       </div>
 
       <div class="usage row">
@@ -76,7 +76,7 @@
           font-awesome-icon="fa-user"
           disabled="main.disabled">
         </search-select>
-        <h4>Selected Option: {{main.currentUserOption}}</h4>
+        <h4>Selected Option: {{main.cleanOption(main.currentUserOption)}}</h4>
         <h4>Disabled: {{main.disabled}}</h4>
       </div>
 
@@ -106,7 +106,7 @@
           placeholder-text="Select Character"
           font-awesome-icon="fa-user">
         </search-select>
-        <h4>Selected Option: {{main.currentVideoGameCharacterOption}}</h4>
+        <h4>Selected Option: {{main.cleanOption(main.currentVideoGameCharacterOption)}}</h4>
       </div>
 
       <div class="bottom-spacer"></div>
@@ -114,6 +114,7 @@
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="search-select.js"></script>
     <script src="demo.js"></script>
   </body>

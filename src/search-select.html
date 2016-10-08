@@ -28,8 +28,8 @@
       <li id="option-list-item-{{$index}}" class="option-list-item"
         ng-class="{'kb-focused': searchSelect.keyboardFocusIndex === $index}"
         ng-repeat="option in searchSelect.filteredOptions track by $index"
-        ng-mousedown="searchSelect.selectOption(option)">
-        {{option.ss_display_name}}
+        ng-mousedown="searchSelect.selectOption(option)"
+        ng-bind-html="option.ss_display_html">
       </li>
     </ul>
   </div>

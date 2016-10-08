@@ -14,6 +14,8 @@ var app = angular
     vm.currentVideoGameCharacterOption = { characterId: 6, name: 'Sonic', weapon: 'Speed' }
     vm.disabled = false;
 
+    vm.cleanOption = cleanOption;
+
     vm.fruitOptions = [
       { id: 1, name: 'Apple', },
       { id: 2, name: 'Banana', },
@@ -47,6 +49,12 @@ var app = angular
       { characterId: 7, name: 'Infernape', weapon: 'Fire', },
       { characterId: 8, name: 'Mia', weapon: 'Clumsiness', },
     ]
+
+    function cleanOption(option){
+      var copy = angular.copy(option);
+      delete copy['ss_display_html'];
+      return copy;
+    }
   }
 
 })();

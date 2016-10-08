@@ -1,7 +1,7 @@
 /*!
  * search-select
  * 
- * Version: 1.2.0 - 2016-10-07T00:06:19.415Z
+ * Version: 1.2.0 - 2016-10-08T04:09:19.798Z
  * License: MIT
  */
 
@@ -120,4 +120,8 @@
 }
 .search-select-container .results-container .option-list .option-list-item:hover {
   background-color: #ececec;
+}
+.search-select-container .results-container .option-list .option-list-item .search-bold {
+  font-weight: bold;
+  color: #888;
 }
