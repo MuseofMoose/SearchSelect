@@ -6,7 +6,6 @@
       ng-class="{'cover-expanded': searchSelect.isOptionSelected()}">
       {{searchSelect.placeholderText}}
     </div>
-
     <input name="search_string" type="text"
       class="input-base"
       placeholder="{{searchSelect.placeholderText}}"
@@ -14,11 +13,10 @@
       ng-class="{'input-expanded': searchSelect.isOptionSelected()}"
       ng-model="searchSelect.searchString"
       ng-focus="searchSelect.ssFocus()"
-      ng-blur="searchSelect.ssBlur()"
       ng-keyup="searchSelect.searchOptions()"
-      ng-required="searchSelect.required"
-      ng-disabled="searchSelect.disabled">
-
+      ng-blur="searchSelect.ssBlur()"
+      ng-disabled="searchSelect.disabled"
+      ng-required="searchSelect.required">
     <i class="icon-base fa"
       ng-class="{'icon-expanded': searchSelect.isOptionSelected(), '{{searchSelect.fontAwesomeIcon}}': true}"></i>
   </div>

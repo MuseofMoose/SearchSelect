@@ -46,11 +46,11 @@
       vm.searchString = '';
       vm.selectedIndex = null;
 
-      vm.ssBlur = ssBlur;
-      vm.ssFocus = ssFocus;
       vm.isOptionSelected = isOptionSelected;
       vm.searchOptions = searchOptions;
       vm.selectOption = selectOption;
+      vm.ssBlur = ssBlur;
+      vm.ssFocus = ssFocus;
 
       //Watching the option list for pages that may not have
       //it as soon as the page loads.
@@ -146,6 +146,11 @@
         searchOptions();
       }
 
+      function resetSearch(){
+        vm.searching = true;
+        vm.searchString = '';
+      }
+
       //Disables arrow key detection and sets the displayed input string.
       function ssBlur(){
         vm.keyboardFocusIndex = null;
@@ -154,6 +159,7 @@
         setSearchStringToOptionName();
       }
 
+      //Main search function.
       function searchOptions(){
         if (vm.searchString === '' || isUndefined(vm.searchString)){
           vm.filteredOptions = options;
@@ -168,29 +174,16 @@
           var searchIndex = name.toLowerCase().indexOf(searchString);
           if (searchIndex !== -1){
             var option = angular.copy(options[i]);
+            //Splitting option display name in order to style the matched substring.
             var substringOne = option.ss_display_name.substring(0, searchIndex);
             var substringTwo = option.ss_display_name.substring(searchIndex, searchIndex + searchString.length);
             var substringThree = option.ss_display_name.substring(searchIndex + searchString.length);
-
             option.ss_display_html = buildDisplayHtml(substringOne, substringTwo, substringThree);
 
             result.push(option);
           }
         }
         vm.filteredOptions = result;
-      }
-
-      function resetSearch(){
-        vm.searching = true;
-        vm.searchString = '';
-      }
-
-      function isOptionSelected(){
-        return (Object.keys(vm.ngModel).length !== 0 ? true : false);
-      }
-
-      function isUndefined(variable){
-        return (typeof variable === 'undefined' ? true : false);
       }
 
       //An object for handling key inputs while focused on search-select.
@@ -275,15 +268,25 @@
         }
       }
 
-      function refreshKeyInput(e){
-        readyForKeyInput = true;
-      }
-
+      //Takes the divided display name, wraps the matched substring in a bold-styled span,
+      //and creates the displayHtml.
       function buildDisplayHtml(substringOne, substringTwo, substringThree){
         var displayHtml = '';
         var boldSubstring = '<span class="search-bold">' + substringTwo + '</span>';
 
         return $sanitize(substringOne + boldSubstring + substringThree);
+      }
+
+      function isOptionSelected(){
+        return (Object.keys(vm.ngModel).length !== 0 ? true : false);
+      }
+
+      function refreshKeyInput(e){
+        readyForKeyInput = true;
+      }
+
+      function isUndefined(variable){
+        return (typeof variable === 'undefined' ? true : false);
       }
     }
   }
