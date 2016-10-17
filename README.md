@@ -1,4 +1,4 @@
-# SearchSelect v 1.2.0
+# SearchSelect v 1.3.0
 Search Select is a simple Angular directive for turning pesky dropdowns into something much more user friendly. More specifically,
 it adds a search bar right into the input, allowing your users to narrow down a dropdown list by typing in key words or letters.
 
@@ -35,11 +35,5 @@ $ bower install --save search-select
 ---
 
 ## Feature Road Map
+Done for now. Open to any requests or concerns.
 
-### In Progress:
-  * Enhance visual look of searching (bold matched substring in results?)
-
-### On-Deck:
-  * Improve this ReadMe
-    * Create fleshed out demo page
-    * Convert "demo" page to full documentation gh-pages "site"
