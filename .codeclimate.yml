@@ -1,0 +1,34 @@
+---
+engines:
+  csslint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+      - python
+      - php
+  eslint:
+    enabled: true
+    checks:
+      wrap-iife:
+        enabled: false
+    exclude_fingerprint:
+    - e9fdc31b90a43878ccf503582bcad01d
+    - adc33199cbdaf28cfeda8b7bee543a3b
+  fixme:
+    enabled: true
+ratings:
+  paths:
+  - "**.css"
+  - "**.inc"
+  - "**.js"
+  - "**.jsx"
+  - "**.module"
+  - "**.php"
+  - "**.py"
+  - "**.rb"
+exclude_paths:
+- dist/

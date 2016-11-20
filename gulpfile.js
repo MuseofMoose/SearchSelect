@@ -59,7 +59,7 @@ gulp.task('scripts', ['clean'], function() {
              quotes: true
             }))
       .pipe(templateCache({module: 'searchSelect'}));
-  };
+  }
 
   function buildDistJS(){
     return gulp.src('src/search-select.js')
@@ -69,7 +69,7 @@ gulp.task('scripts', ['clean'], function() {
       .pipe(jshint())
       .pipe(jshint.reporter('jshint-stylish'))
       .pipe(jshint.reporter('fail'));
-  };
+  }
 
   gulp.src('src/search-select.scss')
       .pipe(less())
@@ -125,7 +125,7 @@ gulp.task('jshint-test', function(){
 function handleError(err) {
   console.log(err.toString());
   this.emit('end');
-};
+}
 
 gulp.task('build', ['scripts']);
 gulp.task('serve', ['build', 'connect', 'watch', 'open']);

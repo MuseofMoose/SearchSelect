@@ -1,3 +1,4 @@
+[![Bower version](https://badge.fury.io/bo/search-select.svg)](https://badge.fury.io/bo/search-select)
 # SearchSelect v 1.3.0
 Search Select is a simple Angular directive for turning pesky dropdowns into something much more user friendly. More specifically,
 it adds a search bar right into the input, allowing your users to narrow down a dropdown list by typing in key words or letters.

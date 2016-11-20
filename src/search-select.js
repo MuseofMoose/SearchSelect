@@ -17,7 +17,7 @@
         idKey: '@',
         labelKeys: '@',
         placeholderText: '@',
-        fontAwesomeIcon: '@',
+        fontAwesomeIcon: '@'
       },
       controller: SearchSelectController,
       controllerAs: 'searchSelect',
