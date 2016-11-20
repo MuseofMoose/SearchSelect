@@ -20,7 +20,9 @@
     "package.json",
     "dist/demo.*",
     "dist/index.html",
-    "dist/bower_components"
+    "dist/bower_components",
+    "karma-conf.js",
+    "test"
   ],
   "dependencies": {
     "angular": "^1.3.0",
