@@ -63,7 +63,6 @@
 
       function intializeSearchSelect(){
         if (isUndefined(vm.ngModel)) { return; }
-
         validateParams();
         setParamDefaults();
         for (var i=0; i<options.length; i++){
@@ -77,12 +76,12 @@
 
       function validateParams(){
         if (!isUndefined(vm.idKey) && !vm.options[0].hasOwnProperty(vm.idKey)){
-          throw 'Error: No option attribute matched with specified idKey.';
+          throw new Error('No option attribute matched with specified idKey.');
         }
       }
 
       function setParamDefaults(){
-        if (isUndefined(vm.idKey)) { vm.idKey = 'id'; }
+        if (isUndefined(vm.idKey) || vm.idKey.trim() === '') { vm.idKey = 'id'; }
       }
 
       function setOptionIndex(i){
@@ -91,7 +90,7 @@
 
       //Sets selected index if an option is already selected.
       function checkIfSelected(i){
-        if (vm.ngModel === null) { return; }
+        if (!isOptionSelected()) { return; }
         if (vm.ngModel[vm.idKey] === options[i][vm.idKey]){
           vm.ngModel = options[i];
           vm.selectedIndex = i;
@@ -110,7 +109,7 @@
           }
         }
         if (ss_display_name === ''){
-          throw 'Error: No option attribute matched with any key in labelKeys.';
+          throw new Error('No option attribute matched with any key in labelKeys.');
         }
         ss_display_name = ss_display_name.slice(0, -1);
         options[i].ss_display_name = ss_display_name;
@@ -278,7 +277,10 @@
       }
 
       function isOptionSelected(){
-        return (Object.keys(vm.ngModel).length !== 0 ? true : false);
+        if (vm.ngModel !== null && Object.keys(vm.ngModel).length !== 0){
+          return true;
+        }
+        return false;
       }
 
       function refreshKeyInput(e){

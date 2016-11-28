@@ -1,7 +1,7 @@
-describe("SearchSelect", function () {
+describe("SearchSelectController", function () {
   var element, controller;
 
-  var videoGameCharacterOptions = [
+  var defaultOptions = [
     { characterId: 1, name: 'Link', weapon: 'Sword' },
     { characterId: 2, name: 'Snake', weapon: 'Explosives' },
     { characterId: 3, name: 'Peach', weapon: 'Turnips' },
@@ -12,26 +12,89 @@ describe("SearchSelect", function () {
     { characterId: 8, name: 'Mia', weapon: 'Clumsiness' },
   ]
 
+  var altOptions = [
+    { characterId: 1, name: 'Link', weapon: 'Sword' },
+    { characterId: 2, name: 'Snake', weapon: 'Explosives' },
+    { characterId: 3, name: 'Peach', weapon: 'Turnips' },
+  ]
+
   var currentOption = { characterId: 1, name: 'Link', weapon: 'Sword' };
 
   var elementString = '<search-select ng-model="currentOption' + '" options="options"' +
-  ' id-key="characterId" label-keys="name" placeholder-text="Select Character"' +
-  ' font-awesome-icon="fa-user"></search-select>';
+  ' id-key="{{idKey}}" label-keys="{{labelKeys}}" placeholder-text="{{placeholderText}}"' +
+  ' font-awesome-icon="{{fontAwesomeIcon}}"></search-select>';
 
   beforeEach(module('searchSelect', 'search-select.html'));
 
   beforeEach(inject(function($templateCache, $rootScope, $compile) {
     $scope = $rootScope.$new();
     $scope.currentOption = currentOption;
-    $scope.options = videoGameCharacterOptions;
+    $scope.options = defaultOptions;
+    $scope.idKey = 'characterId';
+    $scope.labelKeys = 'name';
+    $scope.placeholderText = 'Select Character';
+    $scope.fontAwesomeIcon = 'fa-user';
 
     element = angular.element(elementString);
     element = $compile(element)($scope);
+
     $scope.$digest();
 
     controller = element.controller("searchSelect");
   }));
 
-  it("test", inject(function() {
+  // it ("should have options defined", inject(function() {
+  //   expect (controller.options).toBeDefined();
+  // }));
+
+  // it ("should have Link as the current option", inject(function() {
+  //   expect (controller.ngModel.name).toBe('Link');
+  // }));
+
+  it ("should throw an exception if options don't have the passed in id key", inject(function(){
+    var badOptions = [
+      { id: 1, name: 'Link', weapon: 'Sword' },
+      { id: 2, name: 'Snake', weapon: 'Explosives' },
+    ]
+
+    controller.idKey = "characterId";
+    controller.options = badOptions;
+
+    expect (function(){
+      $scope.$digest()
+    }).toThrowError('No option attribute matched with specified idKey.');
   }));
+
+  it ("should set the id key to 'id' when undefined", inject(function(){
+    controller.idKey = undefined;
+    controller.options = altOptions;
+    $scope.$digest();
+
+    expect (controller.idKey).toBe('id');
+  }))
+
+  it ("should add the ss_index attribute to all options on initialization", inject(function(){
+    var options = controller.filteredOptions;
+    for (var i=0; i<options.length; i++){
+      expect (options[i].ss_index).toBeDefined();
+    }
+  }))
+
+  it ("should have a null selected index when current option is null", inject(function(){
+    controller.selectedIndex = null;
+    controller.ngModel = null;
+    controller.options = altOptions;
+    $scope.$digest();
+
+    expect(controller.selectedIndex).toBe(null);
+  }))
+
+  it ("should set the selected index appropriately if an option is already selected", inject(function(){
+    controller.ngModel = { characterId: 2, name: 'Snake', weapon: 'Explosives' };
+    controller.options = altOptions;
+    $scope.$digest();
+
+    expect (controller.selectedIndex).toBe(1);
+  }))
+
 });
