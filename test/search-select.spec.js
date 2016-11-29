@@ -97,4 +97,17 @@ describe("SearchSelectController", function () {
     expect (controller.selectedIndex).toBe(1);
   }))
 
+  it ("Should throw an exception if label keys string does not match an option key", inject(function(){
+    var badOptions = [
+      { characterId: 1, mismatchedKey: 'Link', weapon: 'Sword' },
+      { characterId: 2, mismatchedKey: 'Snake', weapon: 'Explosives' },
+    ]
+
+    controller.options = badOptions;
+
+    expect (function(){
+      $scope.$digest();
+    }).toThrowError('No option attribute matched with any key in labelKeys.');
+  }))
+
 });
