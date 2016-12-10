@@ -9,18 +9,18 @@ describe ("SearchSelectController", function () {
     { characterId: 5, name: 'Pac-Man', weapon: 'Mouth' },
     { characterId: 6, name: 'Sonic', weapon: 'Speed' },
     { characterId: 7, name: 'Infernape', weapon: 'Fire' },
-    { characterId: 8, name: 'Mia', weapon: 'Clumsiness' },
+    { characterId: 8, name: 'Mia', weapon: 'Clumsiness' }
   ]
 
   var altOptions = [
     { characterId: 1, name: 'Link', weapon: 'Sword' },
     { characterId: 2, name: 'Snake', weapon: 'Explosives' },
-    { characterId: 3, name: 'Peach', weapon: 'Turnips' },
+    { characterId: 3, name: 'Peach', weapon: 'Turnips' }
   ]
 
   var defaultCurrentOption = { characterId: 1, name: 'Link', weapon: 'Sword' };
 
-  var defaultElementString = '<search-select ng-model="currentOption' + '" options="options"' +
+  var defaultElementString = '<search-select ng-model="currentOption options="options"' +
   ' id-key="{{idKey}}" label-keys="{{labelKeys}}" placeholder-text="{{placeholderText}}"' +
   ' font-awesome-icon="{{fontAwesomeIcon}}" disabled="disabled" required="required"></search-select>';
 
@@ -38,7 +38,7 @@ describe ("SearchSelectController", function () {
     $scope.required = null;
 
     buildDirective = function(elementString){
-      if (typeof elementString === 'undefined') { elementString = defaultElementString };
+      if (typeof elementString === 'undefined') { elementString = defaultElementString; }
       element = angular.element(elementString);
       element = $compile(element)($scope);
       $scope.$digest();
@@ -61,7 +61,7 @@ describe ("SearchSelectController", function () {
   it ("should throw an exception if options don't have the passed in id key", inject(function(){
     var badOptions = [
       { id: 1, name: 'Link', weapon: 'Sword' },
-      { id: 2, name: 'Snake', weapon: 'Explosives' },
+      { id: 2, name: 'Snake', weapon: 'Explosives' }
     ]
     $scope.options = badOptions;
 

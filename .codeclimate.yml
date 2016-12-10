@@ -15,7 +15,7 @@ engines:
     checks:
       wrap-iife:
         enabled: false
-    exclude_fingerprint:
+    exclude_fingerprints:
     - e9fdc31b90a43878ccf503582bcad01d
     - adc33199cbdaf28cfeda8b7bee543a3b
   fixme:
@@ -32,3 +32,4 @@ ratings:
   - "**.rb"
 exclude_paths:
 - dist/
+- test/

@@ -44,7 +44,7 @@ module.exports = function(config){
 
     ngHtml2JsPreprocessor: {
       // strip this from the file path
-      stripPrefix: 'SearchSelect/src/',
+      stripPrefix: 'SearchSelect/src/'
       // stripSuffix: '.ext',
       // prepend this to the
       //prependPrefix: 'served/',
