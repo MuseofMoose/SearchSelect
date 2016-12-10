@@ -162,7 +162,6 @@
 
       //Disables arrow key detection and sets the displayed input string.
       function ssBlur(){
-        vm.keyboardFocusIndex = null;
         $element.off('keydown', inputHandler.run);
         $element.off('keyup', refreshKeyInput);
         setSearchStringToOptionName();

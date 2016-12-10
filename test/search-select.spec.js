@@ -189,7 +189,6 @@ describe ("SearchSelectController", function () {
     element.find('input').triggerHandler('blur');
 
     expect (controller.searchString).toBe(controller.ngModel.ss_display_name);
-    expect (controller.keyboardFocusIndex).toBe(null);
   }))
 
   it ("should work", inject(function(){
@@ -203,6 +202,5 @@ describe ("SearchSelectController", function () {
   }))
 
   //Need to add tests for keyboard operation;
-  // it ("should ")
 
 });
