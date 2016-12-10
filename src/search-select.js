@@ -41,19 +41,19 @@
       var readyForKeyInput = true;
 
       vm.filteredOptions = {};
+      vm.isOptionSelected = false;
       vm.keyboardFocusIndex = null;
       vm.searching = false;
       vm.searchString = '';
       vm.selectedIndex = null;
 
-      vm.isOptionSelected = isOptionSelected;
       vm.searchOptions = searchOptions;
       vm.selectOption = selectOption;
       vm.ssBlur = ssBlur;
       vm.ssFocus = ssFocus;
 
-      //Watching the option list for pages that may not have
-      //it as soon as the page loads.
+      //Watching the option list for pages that may not
+      //have it as soon as the page loads.
       $scope.$watch(function(){
         return vm.options;
       }, function(newVal, oldVal){
@@ -65,6 +65,7 @@
         if (isUndefined(vm.ngModel)) { return; }
         validateParams();
         setParamDefaults();
+        setIsOptionSelectedBoolean();
         for (var i=0; i<options.length; i++){
           setOptionIndex(i);
           checkIfSelected(i);
@@ -82,6 +83,13 @@
 
       function setParamDefaults(){
         if (isUndefined(vm.idKey) || vm.idKey.trim() === '') { vm.idKey = 'id'; }
+
+      function setIsOptionSelectedBoolean(){
+        if (vm.ngModel !== null && Object.keys(vm.ngModel).length !== 0){
+          vm.isOptionSelected = true;
+          return;
+        }
+        vm.isOptionSelected = false;
       }
 
       function setOptionIndex(i){
@@ -90,7 +98,7 @@
 
       //Sets selected index if an option is already selected.
       function checkIfSelected(i){
-        if (!isOptionSelected()) { return; }
+        if (!vm.isOptionSelected) { return; }
         if (vm.ngModel[vm.idKey] === options[i][vm.idKey]){
           vm.ngModel = options[i];
           vm.selectedIndex = i;
@@ -119,6 +127,7 @@
       function selectOption(option){
         vm.ngModel = option;
         vm.selectedIndex = option.ss_index;
+        vm.isOptionSelected = true;
         $scope.triggerNgChange(option);
         setSearchStringToOptionName();
       }
@@ -127,9 +136,6 @@
         vm.searching = false;
         if (vm.selectedIndex === null){
           vm.searchString = "";
-          return;
-        }
-        if (isUndefined(options[vm.selectedIndex])){
           return;
         }
         vm.searchString = options[vm.selectedIndex].ss_display_name;
@@ -274,13 +280,6 @@
         var boldSubstring = '<span class="search-bold">' + substringTwo + '</span>';
 
         return $sanitize(substringOne + boldSubstring + substringThree);
-      }
-
-      function isOptionSelected(){
-        if (vm.ngModel !== null && Object.keys(vm.ngModel).length !== 0){
-          return true;
-        }
-        return false;
       }
 
       function refreshKeyInput(e){

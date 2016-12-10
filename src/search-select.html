@@ -1,16 +1,16 @@
 <div class="search-select-container"
   ng-class="{'disabled': searchSelect.disabled}">
     <div class="ss-input-container"
-    ng-class="{'container-expanded': searchSelect.isOptionSelected()}">
+    ng-class="{'container-expanded': searchSelect.isOptionSelected}">
     <div class="cover-base"
-      ng-class="{'cover-expanded': searchSelect.isOptionSelected()}">
+      ng-class="{'cover-expanded': searchSelect.isOptionSelected}">
       {{searchSelect.placeholderText}}
     </div>
     <input name="search_string" type="text"
       class="input-base"
       placeholder="{{searchSelect.placeholderText}}"
       autocomplete="off"
-      ng-class="{'input-expanded': searchSelect.isOptionSelected()}"
+      ng-class="{'input-expanded': searchSelect.isOptionSelected}"
       ng-model="searchSelect.searchString"
       ng-focus="searchSelect.ssFocus()"
       ng-keyup="searchSelect.searchOptions()"
@@ -18,7 +18,7 @@
       ng-disabled="searchSelect.disabled"
       ng-required="searchSelect.required">
     <i class="icon-base fa"
-      ng-class="{'icon-expanded': searchSelect.isOptionSelected(), '{{searchSelect.fontAwesomeIcon}}': true}"></i>
+      ng-class="{'icon-expanded': searchSelect.isOptionSelected, '{{searchSelect.fontAwesomeIcon}}': true}"></i>
   </div>
 
   <div class="results-container" ng-show="searchSelect.searching">
