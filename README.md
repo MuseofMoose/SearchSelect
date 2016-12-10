@@ -1,5 +1,5 @@
 [![Code Climate](https://codeclimate.com/github/MuseofMoose/SearchSelect/badges/gpa.svg)](https://codeclimate.com/github/MuseofMoose/SearchSelect)[![Bower version](https://badge.fury.io/bo/search-select.svg)](https://badge.fury.io/bo/search-select)
-## Examples can be found [here.](https://museofmoose.github.io/SearchSelect/dist/)
+### Examples can be found [here.](https://museofmoose.github.io/SearchSelect/dist/)
 # SearchSelect v 1.3.1
 Search Select is a simple Angular directive for turning pesky dropdowns into something much more user friendly. More specifically,
 it adds a search bar right into the input, allowing your users to narrow down a dropdown list by typing in key words or letters.
