@@ -1,7 +1,7 @@
 /*!
  * search-select
  * 
- * Version: 1.3.0 - 2016-12-10T02:39:41.496Z
+ * Version: 1.3.0 - 2016-12-10T03:46:20.944Z
  * License: MIT
  */
 
@@ -170,7 +170,6 @@
 
       //Disables arrow key detection and sets the displayed input string.
       function ssBlur(){
-        vm.keyboardFocusIndex = null;
         $element.off('keydown', inputHandler.run);
         $element.off('keyup', refreshKeyInput);
         setSearchStringToOptionName();
