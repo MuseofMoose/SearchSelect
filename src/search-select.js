@@ -85,7 +85,8 @@
       }
 
       function setParamDefaults(){
-        if (isUndefined(vm.idKey) || vm.idKey.trim() === '') { vm.idKey = 'id'; }
+        if (isUndefinedOrEmptyString(vm.idKey)) { vm.idKey = 'id'; }
+      }
 
       function setIsOptionSelectedBoolean(){
         if (vm.ngModel !== null && Object.keys(vm.ngModel).length !== 0){
