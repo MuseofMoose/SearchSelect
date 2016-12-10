@@ -138,9 +138,9 @@
       //Enables arrow key detection and resets search.
       function ssFocus(){
         if (vm.disabled) { return; }
+        $element.on('keydown', inputHandler.run);
+        $element.on('keyup', refreshKeyInput);
 
-        angular.element(document).on('keydown', inputHandler.run);
-        angular.element(document).on('keyup', refreshKeyInput);
         resetSearch();
         searchOptions();
       }
@@ -153,8 +153,8 @@
       //Disables arrow key detection and sets the displayed input string.
       function ssBlur(){
         vm.keyboardFocusIndex = null;
-        angular.element(document).off('keydown', inputHandler.run);
-        angular.element(document).off('keyup', refreshKeyInput);
+        $element.off('keydown', inputHandler.run);
+        $element.off('keyup', refreshKeyInput);
         setSearchStringToOptionName();
       }
 
