@@ -62,7 +62,6 @@
       }, true);
 
       function intializeSearchSelect(){
-        if (isUndefined(vm.ngModel)) { return; }
         validateParams();
         setParamDefaults();
         setIsOptionSelectedBoolean();
@@ -76,7 +75,11 @@
       }
 
       function validateParams(){
-        if (!isUndefined(vm.idKey) && !vm.options[0].hasOwnProperty(vm.idKey)){
+        //consider a stronger set of vm.ngModel validations
+        if (isUndefined(vm.ngModel)) {
+          throw new Error('ngModel variable for storing selected option is undefined.');
+        }
+        if (!isUndefinedOrEmptyString(vm.idKey) && !vm.options[0].hasOwnProperty(vm.idKey)){
           throw new Error('No option attribute matched with specified idKey.');
         }
       }
@@ -287,7 +290,12 @@
       }
 
       function isUndefined(variable){
-        return (typeof variable === 'undefined' ? true : false);
+        return (typeof variable === 'undefined') ? true : false;
+      }
+
+      function isUndefinedOrEmptyString(variable){
+        return (isUndefined(variable) || variable.trim() === '') ? true : false;
+      }
       }
     }
   }
