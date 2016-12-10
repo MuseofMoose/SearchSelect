@@ -11,6 +11,7 @@
 
 .instructions {
   font-size: 18px;
+  overflow: hidden;
 }
 
 .instructions p {
@@ -23,4 +24,25 @@
   margin-bottom: 10px;
 
   font-size: 20px;
+}
+
+.instructions.ng-enter {
+    transition: 0.3s ease all;
+    opacity: 0;
+    height: 0px;
+}
+
+.instructions.ng-enter.ng-enter-active {
+    opacity: 1;
+    height: 340px;
+}
+
+.instructions.ng-leave {
+    transition: 0.3s ease all;
+    opacity: 1;
+    height: 340px;
+}
+.instructions.ng-leave.ng-leave-active {
+    opacity: 0;
+    height: 0px;
 }
