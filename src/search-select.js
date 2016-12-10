@@ -32,7 +32,7 @@
     return directive;
 
     /** @ngInject */
-    function SearchSelectController($scope, $sanitize) {
+    function SearchSelectController($scope, $sanitize, $element) {
       var vm = this;
 
       var inputHandler = new KeyInputHandler();
@@ -169,7 +169,11 @@
       }
 
       //Main search function.
-      function searchOptions(){
+      function searchOptions(keyCode){
+        if (isInputHandlerKeyCode(keyCode)){
+          return;
+        }
+        vm.keyboardFocusIndex = 0;
         if (vm.searchString === '' || isUndefined(vm.searchString)){
           vm.filteredOptions = options;
           return;
@@ -204,16 +208,18 @@
           var key = e.keyCode ? e.keyCode : e.which;
           readyForKeyInput = false;
 
-          if (key === 38) { up(); }
-          if (key === 40) { down(); }
-          if (key === 13) { enter(e); }
-          if (key === 27) { escape(e); }
+          if (key === 38) { up(e); }
+          else if (key === 40) { down(e); }
+          else if (key === 13) { enter(e); }
+          else if (key === 27) { escape(e); }
+          else { return; }
 
           $scope.$apply();
         };
 
         //Move to previous option on up key press.
-        function up(){
+        function up(e){
+          e.preventDefault();
           if (vm.keyboardFocusIndex === 0 || vm.keyboardFocusIndex === null){
             return;
           }
@@ -222,13 +228,8 @@
         }
 
         //Move to next option on down key press.
-        function down(){
-          if (vm.keyboardFocusIndex === null){
-            vm.keyboardFocusIndex = 0;
-            adjustScroll(true);
-            $scope.$apply();
-            return;
-          }
+        function down(e){
+          e.preventDefault();
           if (vm.keyboardFocusIndex >= vm.filteredOptions.length - 1){
             return;
           }
@@ -238,6 +239,7 @@
 
         //Close out search and select option on enter key press.
         function enter(e){
+          e.preventDefault();
           if (vm.keyboardFocusIndex === null){
             return;
           }
@@ -248,6 +250,7 @@
 
         //Close out search on escape key press.
         function escape(e){
+          e.preventDefault();
           e.target.blur();
           readyForKeyInput = true;
         }
@@ -297,6 +300,12 @@
       function isUndefinedOrEmptyString(variable){
         return (isUndefined(variable) || variable.trim() === '') ? true : false;
       }
+
+      function isInputHandlerKeyCode(keyCode){
+        if (keyCode === 38 || keyCode === 40 || keyCode === 13 || keyCode === 27){
+          return true;
+        }
+        return false;
       }
     }
   }

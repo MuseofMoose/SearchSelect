@@ -13,7 +13,7 @@
       ng-class="{'input-expanded': searchSelect.isOptionSelected}"
       ng-model="searchSelect.searchString"
       ng-focus="searchSelect.ssFocus()"
-      ng-keyup="searchSelect.searchOptions()"
+      ng-keyup="searchSelect.searchOptions($event.keyCode)"
       ng-blur="searchSelect.ssBlur()"
       ng-disabled="searchSelect.disabled"
       ng-required="searchSelect.required">
