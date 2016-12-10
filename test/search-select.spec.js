@@ -154,7 +154,6 @@ describe ("SearchSelectController", function () {
   it ("should correctly update directive variables when an option is selected", inject(function(){
     buildDirective();
     var selectedOption = controller.filteredOptions[2];
-
     controller.selectOption(selectedOption);
 
     expect (controller.ngModel).toBe(selectedOption);
@@ -191,16 +190,20 @@ describe ("SearchSelectController", function () {
     expect (controller.searchString).toBe(controller.ngModel.ss_display_name);
   }))
 
-  it ("should work", inject(function(){
+  it ("should filter list based on key input", inject(function(){
+    $scope.currentOption = null;
     buildDirective();
-    var input = element.find('input');
-    input.triggerHandler('focus');
-    angular.element(document).triggerHandler({type: 'keydown', which: 40});
+    var expectedResult = [{
+      characterId: 1,
+      name: 'Link',
+      weapon: 'Sword',
+      ss_index: 0,
+      ss_display_name: 'Link',
+      ss_display_html: '<span class="search-bold">Li</span>nk'
+    }];
+    controller.searchString = 'li';
+    controller.searchOptions()
 
-
-    expect (controller.keyboardFocusIndex).toBe(1);
+    expect (controller.filteredOptions).toEqual(expectedResult);
   }))
-
-  //Need to add tests for keyboard operation;
-
 });
