@@ -46,3 +46,7 @@
     opacity: 0;
     height: 0;
 }
+
+.search-select-container {
+  margin: 20px 0;
+}

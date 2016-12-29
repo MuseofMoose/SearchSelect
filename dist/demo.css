@@ -29,7 +29,7 @@
 .instructions.ng-enter {
     transition: 0.3s ease all;
     opacity: 0;
-    height: 0px;
+    height: 0;
 }
 
 .instructions.ng-enter.ng-enter-active {
@@ -44,5 +44,9 @@
 }
 .instructions.ng-leave.ng-leave-active {
     opacity: 0;
-    height: 0px;
+    height: 0;
+}
+
+.search-select-container {
+  margin: 20px 0;
 }
