@@ -6,11 +6,11 @@
   /** @ngInject */
   function searchSelect() {
     var directive = {
-      require: "ngModel",
+      require: 'ngModel',
       restrict: 'EA',
       templateUrl: 'search-select.html',
       scope: {
-        ngModel: '=',
+        selectedOption: '=ngModel',
         options: '=',
         disabled: '=?',
         required: '=?',
@@ -75,9 +75,9 @@
       }
 
       function validateParams(){
-        //consider a stronger set of vm.ngModel validations
-        if (isUndefined(vm.ngModel)) {
-          throw new Error('ngModel variable for storing selected option is undefined.');
+        //consider a stronger set of vm.selectedOption validations
+        if (isUndefined(vm.selectedOption)) {
+          throw new Error('selectedOption variable for storing selected option is undefined.');
         }
         if (!isUndefinedOrEmptyString(vm.idKey) && !vm.options[0].hasOwnProperty(vm.idKey)){
           throw new Error('No option attribute matched with specified idKey.');
@@ -89,7 +89,7 @@
       }
 
       function setIsOptionSelectedBoolean(){
-        if (vm.ngModel !== null && Object.keys(vm.ngModel).length !== 0){
+        if (vm.selectedOption !== null && Object.keys(vm.selectedOption).length !== 0){
           vm.isOptionSelected = true;
           return;
         }
@@ -103,8 +103,8 @@
       //Sets selected index if an option is already selected.
       function checkIfSelected(i){
         if (!vm.isOptionSelected) { return; }
-        if (vm.ngModel[vm.idKey] === options[i][vm.idKey]){
-          vm.ngModel = options[i];
+        if (vm.selectedOption[vm.idKey] === options[i][vm.idKey]){
+          vm.selectedOption = options[i];
           vm.selectedIndex = i;
         }
       }
@@ -129,7 +129,7 @@
       }
 
       function selectOption(option){
-        vm.ngModel = option;
+        vm.selectedOption = option;
         vm.selectedIndex = option.ss_index;
         vm.isOptionSelected = true;
         $scope.triggerNgChange(option);
