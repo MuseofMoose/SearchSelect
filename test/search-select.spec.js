@@ -1,5 +1,5 @@
 describe ("SearchSelectController", function () {
-  var element, controller, buildController;
+  var element, controller, buildDirective;
 
   var defaultOptions = [
     { characterId: 1, name: 'Link', weapon: 'Sword' },
@@ -24,7 +24,7 @@ describe ("SearchSelectController", function () {
   ' id-key="{{idKey}}" label-keys="{{labelKeys}}" placeholder-text="{{placeholderText}}"' +
   ' font-awesome-icon="{{fontAwesomeIcon}}" disabled="disabled" required="required"></search-select>';
 
-  beforeEach(module('searchSelect', 'search-select.html'));
+  beforeEach(module('searchSelect', 'templates'));
 
   beforeEach(inject(function($templateCache, $rootScope, $compile) {
     $scope = $rootScope.$new();
@@ -50,12 +50,12 @@ describe ("SearchSelectController", function () {
   //Initialization Function Tests
   //*
 
-  it ("should throw an exception if selectedOption is undefined", inject(function(){
+  it ("should throw an exception if currentOption is undefined", inject(function(){
     $scope.currentOption = undefined;
 
     expect (function(){
       buildDirective();
-    }).toThrowError('selectedOption variable for storing selected option is undefined.');
+    }).toThrowError('currentOption variable for storing selected option is undefined.');
   }));
 
   it ("should throw an exception if options don't have the passed in id key", inject(function(){
@@ -144,7 +144,7 @@ describe ("SearchSelectController", function () {
   it ("should set the search string to the options ss_display_name if an option is already selected", inject(function(){
     buildDirective();
 
-    expect (controller.searchString).toBe(controller.selectedOption.ss_display_name);
+    expect (controller.searchString).toBe(controller.currentOption.ss_display_name);
   }))
 
   //*
@@ -156,7 +156,7 @@ describe ("SearchSelectController", function () {
     var selectedOption = controller.filteredOptions[2];
     controller.selectOption(selectedOption);
 
-    expect (controller.selectedOption).toBe(selectedOption);
+    expect (controller.currentOption).toBe(selectedOption);
     expect (controller.selectedIndex).toBe(selectedOption.ss_index);
     expect (controller.isOptionSelected).toBe(true);
     expect ($scope.currentOption).toBe(selectedOption);
@@ -187,7 +187,7 @@ describe ("SearchSelectController", function () {
     controller.keyboardFocusIndex = 1;
     element.find('input').triggerHandler('blur');
 
-    expect (controller.searchString).toBe(controller.selectedOption.ss_display_name);
+    expect (controller.searchString).toBe(controller.currentOption.ss_display_name);
   }))
 
   it ("should filter list based on key input", inject(function(){

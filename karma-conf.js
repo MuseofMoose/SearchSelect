@@ -44,7 +44,7 @@ module.exports = function(config){
 
     ngHtml2JsPreprocessor: {
       // strip this from the file path
-      stripPrefix: 'SearchSelect/src/'
+      stripPrefix: 'SearchSelect/src/',
       // stripSuffix: '.ext',
       // prepend this to the
       //prependPrefix: 'served/',
@@ -65,7 +65,7 @@ module.exports = function(config){
       //   if you'd like to generate modules dynamically
       //   htmlPath is a originalPath stripped and/or prepended
       //   with all provided suffixes and prefixes
-      // moduleName: 'foo'
+      moduleName: 'templates'
     },
 
     // list of karma plugins
