@@ -7,8 +7,10 @@
   function searchSelect() {
     var directive = {
       require: 'ngModel',
-      restrict: 'EA',
+      restrict: 'E',
       templateUrl: 'search-select.html',
+      controller: SearchSelectController,
+      controllerAs: 'searchSelect',
       scope: {
         currentOption: '=ngModel',
         options: '=',
@@ -19,8 +21,6 @@
         placeholderText: '@',
         fontAwesomeIcon: '@'
       },
-      controller: SearchSelectController,
-      controllerAs: 'searchSelect',
       bindToController: true,
       link: function(scope, elt, attrs, ctrl){
         scope.triggerNgChange = function(value){
@@ -33,35 +33,38 @@
 
     /** @ngInject */
     function SearchSelectController($scope, $sanitize, $element) {
-      var vm = this;
+      var options, labelKeys;
 
+      var vm = this;
       var inputHandler = new KeyInputHandler();
-      var labelKeys = vm.labelKeys.split(' ');
-      var options = angular.copy(vm.options);
       var readyForKeyInput = true;
 
-      vm.filteredOptions = {};
-      vm.isOptionSelected = false;
-      vm.keyboardFocusIndex = null;
-      vm.searching = false;
-      vm.searchString = '';
-      vm.selectedIndex = null;
+      this.$onInit = function () {
+        labelKeys = vm.labelKeys.split(' ');
 
-      vm.searchOptions = searchOptions;
-      vm.selectOption = selectOption;
-      vm.ssBlur = ssBlur;
-      vm.ssFocus = ssFocus;
+        vm.filteredOptions = {};
+        vm.isOptionSelected = false;
+        vm.keyboardFocusIndex = null;
+        vm.searching = false;
+        vm.searchString = '';
+        vm.selectedIndex = null;
 
-      //Watching the option list for pages that may not
-      //have it as soon as the page loads.
-      $scope.$watch(function(){
-        return vm.options;
-      }, function(newVal, oldVal){
-        options = angular.copy(vm.options);
-        intializeSearchSelect();
-      }, true);
+        vm.searchOptions = searchOptions;
+        vm.selectOption = selectOption;
+        vm.ssBlur = ssBlur;
+        vm.ssFocus = ssFocus;
+
+        //Watching the option list for pages that may not
+        //have it as soon as the page loads.
+        $scope.$watch(function(){
+          return vm.options;
+        }, function(newVal, oldVal){
+          intializeSearchSelect();
+        }, true);
+      };
 
       function intializeSearchSelect(){
+        options = angular.copy(vm.options);
         validateParams();
         setParamDefaults();
         setIsOptionSelectedBoolean();
@@ -77,7 +80,7 @@
       function validateParams(){
         //consider a stronger set of vm.currentOption validations
         if (isUndefined(vm.currentOption)) {
-          throw new Error('currentOption variable for storing selected option is undefined.');
+          throw new Error('currentOption attribute is undefined.');
         }
         if (!isUndefinedOrEmptyString(vm.idKey) && !vm.options[0].hasOwnProperty(vm.idKey)){
           throw new Error('No option attribute matched with specified idKey.');

@@ -1,6 +1,6 @@
 [![Code Climate](https://codeclimate.com/github/MuseofMoose/SearchSelect/badges/gpa.svg)](https://codeclimate.com/github/MuseofMoose/SearchSelect)[![Bower version](https://badge.fury.io/bo/search-select.svg)](https://badge.fury.io/bo/search-select)
 ### Examples can be found [here.](https://museofmoose.github.io/SearchSelect/dist/)
-# SearchSelect v 1.3.1
+# SearchSelect v 2.0.0
 Search Select is a simple Angular directive for turning pesky dropdowns into something much more user friendly. More specifically,
 it adds a search bar right into the input, allowing your users to narrow down a dropdown list by typing in key words or letters.
 
@@ -30,9 +30,9 @@ $ bower install --save search-select
   * Narrow down the option list by typing into the input.
 
 ### Dependencies:
-  * angular 1.3.0
-  * angular-animate 1.3.0, if you want animation when you make your first selection.
-  * angular-sanitize 1.3.0
+  * angular 1.6.0
+  * angular-animate 1.6.0, if you want animation when you make your first selection.
+  * angular-sanitize 1.6.0
 
 ---
 
