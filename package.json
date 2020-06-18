@@ -45,6 +45,6 @@
     "karma-junit-reporter": "^1.1.0",
     "karma-ng-html2js-preprocessor": "^1.0.0",
     "karma-phantomjs-launcher": "^1.0.2",
-    "mversion": "^1.6.0"
+    "mversion": "^2.0.0"
   }
 }
